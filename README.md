@@ -1,6 +1,6 @@
 # Harjoitustyö
 
-###Idea
+### Idea
 
 Ideana on luoda huonevarausjärjestelmän.
 Asiakas pystyy varata enemmän kuin yksi huone kerralla. Varauksessa asiakkaan tietojen lisäksi näkyy myös varauksen tehneen työntekijän tiedot.
