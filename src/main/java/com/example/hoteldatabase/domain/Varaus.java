@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Varaukset {
+public class Varaus {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long varausId;
@@ -19,11 +19,11 @@ public class Varaukset {
 	private int hinta;
 	private Boolean maksettu;
 	
-	public Varaukset() {
+	public Varaus() {
 		super();
 	}
 	
-	public Varaukset(Long varausId, LocalDateTime varausPvm, String lisatietoja, int hinta, Boolean maksettu) {
+	public Varaus(Long varausId, LocalDateTime varausPvm, String lisatietoja, int hinta, Boolean maksettu) {
 		super();
 		this.varausId = varausId;
 		this.varausPvm = varausPvm;

@@ -4,18 +4,18 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Huoneet {
+public class Huone {
 	@Id
 	private String huoneNro;
 	private String huoneKuvaus;
 	private int hinta;
 	private Boolean onkoVapaa;	
 	
-	public Huoneet() {
+	public Huone() {
 		super();
 	}
 	
-	public Huoneet(String huoneNro, String huoneKuvaus, int hinta, Boolean onkoVapaa) {
+	public Huone(String huoneNro, String huoneKuvaus, int hinta, Boolean onkoVapaa) {
 		super();
 		this.huoneNro = huoneNro;
 		this.huoneKuvaus = huoneKuvaus;

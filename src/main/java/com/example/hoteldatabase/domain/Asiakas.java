@@ -6,10 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Tyontekijat {
+public class Asiakas {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long tyontekijaId;
+	private long asiakasId;
 	private String etunimi;
 	private String sukunimi;
 	private String sposti;
@@ -18,28 +18,18 @@ public class Tyontekijat {
 	//postinumero;
 	
 	
-	public Tyontekijat() {
+	public Asiakas() {
 		super();
 	}
 
 
-	public Tyontekijat(String etunimi, String sukunimi, String sposti, String puhelin, String katuosoite) {
+	public Asiakas(String etunimi, String sukunimi, String sposti, String puhelin, String katuosoite) {
 		super();
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
 		this.sposti = sposti;
 		this.puhelin = puhelin;
 		this.katuosoite = katuosoite;
-	}
-
-
-	public long getTyontekijaId() {
-		return tyontekijaId;
-	}
-
-
-	public void setId(long tyontekijaId) {
-		this.tyontekijaId = tyontekijaId;
 	}
 
 
@@ -97,9 +87,10 @@ public class Tyontekijat {
 
 	@Override
 	public String toString() {
-		return "Tyontekijat [tyontekijaId=" + tyontekijaId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", sposti=" + sposti
+		return "Asiakkaat [asiakasId=" + asiakasId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", sposti=" + sposti
 				+ ", puhelin=" + puhelin + ", katuosoite=" + katuosoite + "]";
 	}
+	
 	
 	
 }

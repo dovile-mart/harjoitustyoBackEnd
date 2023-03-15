@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Huonevaraukset {
+public class Huonevaraus {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long huoneVarausId;
@@ -21,11 +21,11 @@ public class Huonevaraukset {
 	private int hinta;
 	private Boolean maksettu;
 	
-	public Huonevaraukset() {
+	public Huonevaraus() {
 		super();
 	}
 
-	public Huonevaraukset(long huoneVarausId, LocalDateTime tuloPvm, LocalDateTime lahtoPvm, int hloMaara,
+	public Huonevaraus(long huoneVarausId, LocalDateTime tuloPvm, LocalDateTime lahtoPvm, int hloMaara,
 			String lisatietoja, int hinta, Boolean maksettu) {
 		super();
 		this.huoneVarausId = huoneVarausId;

@@ -4,19 +4,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-public class Postinumerot {
+public class Postinumero {
 	
 	@Id
 	private String postinumero;
 	private String Postitoimipaikka;
 
 
-	public Postinumerot() {
+	public Postinumero() {
 		super();
 	}
 
 
-	public Postinumerot(String postinumero, String postitoimipaikka) {
+	public Postinumero(String postinumero, String postitoimipaikka) {
 		super();
 		this.postinumero = postinumero;
 		Postitoimipaikka = postitoimipaikka;
