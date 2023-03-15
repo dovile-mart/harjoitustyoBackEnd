@@ -1,9 +1,15 @@
 package com.example.hoteldatabase.domain;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Tyontekija {
@@ -15,8 +21,13 @@ public class Tyontekija {
 	private String sposti;
 	private String puhelin;
 	private String katuosoite;
-	//postinumero;
+
+	@ManyToOne
+	@JoinColumn(name="postinumero")
+	private Postinumero postinumero;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "tyontekija")
+	private List<Varaus> varaukset;
 	
 	public Tyontekija() {
 		super();
@@ -30,6 +41,45 @@ public class Tyontekija {
 		this.sposti = sposti;
 		this.puhelin = puhelin;
 		this.katuosoite = katuosoite;
+	}
+
+
+	public Tyontekija(long tyontekijaId, String etunimi, String sukunimi, String sposti, String puhelin,
+			String katuosoite, Postinumero postinumero, List<Varaus> varaukset) {
+		super();
+		this.tyontekijaId = tyontekijaId;
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		this.sposti = sposti;
+		this.puhelin = puhelin;
+		this.katuosoite = katuosoite;
+		this.postinumero = postinumero;
+		this.varaukset = varaukset;
+	}
+
+
+	public Postinumero getPostinumero() {
+		return postinumero;
+	}
+
+
+	public void setPostinumero(Postinumero postinumero) {
+		this.postinumero = postinumero;
+	}
+
+
+	public List<Varaus> getVaraukset() {
+		return varaukset;
+	}
+
+
+	public void setVaraukset(List<Varaus> varaukset) {
+		this.varaukset = varaukset;
+	}
+
+
+	public void setTyontekijaId(long tyontekijaId) {
+		this.tyontekijaId = tyontekijaId;
 	}
 
 
@@ -93,13 +143,21 @@ public class Tyontekija {
 	}
 
 
-
-
 	@Override
 	public String toString() {
-		return "Tyontekijat [tyontekijaId=" + tyontekijaId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", sposti=" + sposti
-				+ ", puhelin=" + puhelin + ", katuosoite=" + katuosoite + "]";
+		return "Tyontekija [tyontekijaId=" + tyontekijaId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi
+				+ ", sposti=" + sposti + ", puhelin=" + puhelin + ", katuosoite=" + katuosoite + ", postinumero="
+				+ postinumero + ", varaukset=" + varaukset + "]";
 	}
+
+
+
+/*
+	@Override
+	public String toString() {
+		return "Tyontekija [tyontekijaId=" + tyontekijaId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", sposti=" + sposti
+				+ ", puhelin=" + puhelin + ", katuosoite=" + katuosoite + "]";
+	}*/
 	
 	
 }

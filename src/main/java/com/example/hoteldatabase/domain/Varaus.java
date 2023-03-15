@@ -1,24 +1,63 @@
 package com.example.hoteldatabase.domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Varaus {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long varausId;
-	//asiakasId
-	//tyontekijaId
+	
+	@ManyToOne
+	@JoinColumn(name="asiakasId")
+	private Asiakas asiakas;
+	
+	@ManyToOne
+	@JoinColumn(name="tyontekijaId")
+	private Tyontekija tyontekija;
+	
 	private LocalDateTime varausPvm;
 	private String lisatietoja;
 	private int hinta;
-	private Boolean maksettu;
+	private boolean maksettu;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "varaus")
+	private List<Huonevaraus> huonevaraus;
+	
+	public Asiakas getAsiakas() {
+		return asiakas;
+	}
+
+	public void setAsiakas(Asiakas asiakas) {
+		this.asiakas = asiakas;
+	}
+
+	public Tyontekija getTyontekija() {
+		return tyontekija;
+	}
+
+	public void setTyontekija(Tyontekija tyontekija) {
+		this.tyontekija = tyontekija;
+	}
+
+	public List<Huonevaraus> getHuonevaraus() {
+		return huonevaraus;
+	}
+
+	public void setHuonevaraus(List<Huonevaraus> huonevaraus) {
+		this.huonevaraus = huonevaraus;
+	}
+
 	public Varaus() {
 		super();
 	}
@@ -30,6 +69,19 @@ public class Varaus {
 		this.lisatietoja = lisatietoja;
 		this.hinta = hinta;
 		this.maksettu = maksettu;
+	}
+
+	public Varaus(Long varausId, Asiakas asiakas, Tyontekija tyontekija, LocalDateTime varausPvm, String lisatietoja,
+			int hinta, boolean maksettu, List<Huonevaraus> huonevaraus) {
+		super();
+		this.varausId = varausId;
+		this.asiakas = asiakas;
+		this.tyontekija = tyontekija;
+		this.varausPvm = varausPvm;
+		this.lisatietoja = lisatietoja;
+		this.hinta = hinta;
+		this.maksettu = maksettu;
+		this.huonevaraus = huonevaraus;
 	}
 
 	public Long getVarausId() {
@@ -64,19 +116,26 @@ public class Varaus {
 		this.hinta = hinta;
 	}
 
-	public Boolean getMaksettu() {
+	public boolean getMaksettu() {
 		return maksettu;
 	}
 
-	public void setMaksettu(Boolean maksettu) {
+	public void setMaksettu(boolean maksettu) {
 		this.maksettu = maksettu;
 	}
 
 	@Override
 	public String toString() {
-		return "Varaukset [varausId=" + varausId + ", varausPvm=" + varausPvm + ", lisatietoja=" + lisatietoja
-				+ ", hinta=" + hinta + ", maksettu=" + maksettu + "]";
+		return "Varaus [varausId=" + varausId + ", asiakas=" + asiakas + ", tyontekija=" + tyontekija + ", varausPvm="
+				+ varausPvm + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu=" + maksettu
+				+ ", huonevaraus=" + huonevaraus + "]";
 	}
+
+/*	@Override
+	public String toString() {
+		return "Varaus [varausId=" + varausId + ", varausPvm=" + varausPvm + ", lisatietoja=" + lisatietoja
+				+ ", hinta=" + hinta + ", maksettu=" + maksettu + "]";
+	}*/
 	
 	
 }

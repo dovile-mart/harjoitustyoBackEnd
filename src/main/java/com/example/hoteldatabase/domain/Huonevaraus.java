@@ -6,14 +6,23 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Huonevaraus {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long huoneVarausId;
-	//varausId;
-	//huoneNro;
+	
+	@ManyToOne
+	@JoinColumn(name="varausId")
+	private Varaus varaus;
+	
+	@ManyToOne
+	@JoinColumn(name="huoneNro")
+	private Huone huone;
+
 	private LocalDateTime tuloPvm;
 	private LocalDateTime lahtoPvm;
 	private int hloMaara;
@@ -36,6 +45,37 @@ public class Huonevaraus {
 		this.hinta = hinta;
 		this.maksettu = maksettu;
 	}
+
+	public Huonevaraus(long huoneVarausId, Varaus varaus, Huone huone, LocalDateTime tuloPvm, LocalDateTime lahtoPvm,
+			int hloMaara, String lisatietoja, int hinta, Boolean maksettu) {
+		super();
+		this.huoneVarausId = huoneVarausId;
+		this.varaus = varaus;
+		this.huone = huone;
+		this.tuloPvm = tuloPvm;
+		this.lahtoPvm = lahtoPvm;
+		this.hloMaara = hloMaara;
+		this.lisatietoja = lisatietoja;
+		this.hinta = hinta;
+		this.maksettu = maksettu;
+	}
+	
+	public Varaus getVaraus() {
+		return varaus;
+	}
+
+	public void setVaraus(Varaus varaus) {
+		this.varaus = varaus;
+	}
+
+	public Huone getHuone() {
+		return huone;
+	}
+
+	public void setHuone(Huone huone) {
+		this.huone = huone;
+	}
+
 
 	public long getHuoneVarausId() {
 		return huoneVarausId;
@@ -95,10 +135,19 @@ public class Huonevaraus {
 
 	@Override
 	public String toString() {
-		return "Huonevaraukset [huoneVarausId=" + huoneVarausId + ", tuloPvm=" + tuloPvm + ", lahtoPvm=" + lahtoPvm
+		return "Huonevaraus [huoneVarausId=" + huoneVarausId + ", varaus=" + varaus + ", huone=" + huone + ", tuloPvm="
+				+ tuloPvm + ", lahtoPvm=" + lahtoPvm + ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja
+				+ ", hinta=" + hinta + ", maksettu=" + maksettu + "]";
+	}
+
+	
+
+/*	@Override
+	public String toString() {
+		return "Huonevaraus [huoneVarausId=" + huoneVarausId + ", tuloPvm=" + tuloPvm + ", lahtoPvm=" + lahtoPvm
 				+ ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu="
 				+ maksettu + "]";
-	}
+	}*/
 
 	
 	
