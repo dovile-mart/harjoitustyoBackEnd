@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,8 +27,10 @@ public class Tyontekija {
 	@JoinColumn(name="postinumero")
 	private Postinumero postinumero;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "tyontekija")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "tyontekija")//(fetch = FetchType.EAGER)
 	private List<Varaus> varaukset;
+	
+	
 	
 	public Tyontekija() {
 		super();
@@ -44,17 +47,17 @@ public class Tyontekija {
 	}
 
 
-	public Tyontekija(long tyontekijaId, String etunimi, String sukunimi, String sposti, String puhelin,
-			String katuosoite, Postinumero postinumero, List<Varaus> varaukset) {
+	public Tyontekija(String etunimi, String sukunimi, String sposti, String puhelin,
+			String katuosoite, Postinumero postinumero){//, List<Varaus> varaukset) {
 		super();
-		this.tyontekijaId = tyontekijaId;
+		//this.tyontekijaId = tyontekijaId;
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
 		this.sposti = sposti;
 		this.puhelin = puhelin;
 		this.katuosoite = katuosoite;
 		this.postinumero = postinumero;
-		this.varaukset = varaukset;
+//		this.varaukset = varaukset;
 	}
 
 
@@ -147,17 +150,17 @@ public class Tyontekija {
 	public String toString() {
 		return "Tyontekija [tyontekijaId=" + tyontekijaId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi
 				+ ", sposti=" + sposti + ", puhelin=" + puhelin + ", katuosoite=" + katuosoite + ", postinumero="
-				+ postinumero + ", varaukset=" + varaukset + "]";
+				+ postinumero +  "]";//", varaukset=" + varaukset +
 	}
 
 
-
 /*
+
 	@Override
 	public String toString() {
 		return "Tyontekija [tyontekijaId=" + tyontekijaId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", sposti=" + sposti
 				+ ", puhelin=" + puhelin + ", katuosoite=" + katuosoite + "]";
-	}*/
+	}
 	
-	
+	*/
 }
