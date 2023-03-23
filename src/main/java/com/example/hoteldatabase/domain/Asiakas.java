@@ -4,6 +4,7 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,21 +14,25 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class Asiakas {
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long asiakasId;
+	
 	private String etunimi;
 	private String sukunimi;
 	private String sposti;
 	private String puhelin;
 	private String katuosoite;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="postinumero")
 	private Postinumero postinumero;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "asiakas")
-	private List<Varaus> varaukset;
+	@OneToMany(fetch = FetchType.EAGER)//(cascade = CascadeType.ALL, mappedBy = "asiakas") //täämän muutoksen jälkeen alkoi tulostaa asiakaita
+	private List<Varaus> varaukset;		//ja h2-consolessa näkyy ASIAKAS_VARAUKSET -taulu????
+	
+	
 	
 	public Asiakas() {
 		super();
@@ -44,20 +49,21 @@ public class Asiakas {
 	}
 
 
-	public Asiakas(long asiakasId, String etunimi, String sukunimi, String sposti, String puhelin, String katuosoite,
-			Postinumero postinumero, List<Varaus> varaukset) {
+	public Asiakas(String etunimi, String sukunimi, String sposti, String puhelin, String katuosoite,
+			Postinumero postinumero) {//, List<Varaus> varaukset) {
 		super();
-		this.asiakasId = asiakasId;
+//		this.asiakasId = asiakasId;
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
 		this.sposti = sposti;
 		this.puhelin = puhelin;
 		this.katuosoite = katuosoite;
 		this.postinumero = postinumero;
-		this.varaukset = varaukset;
+//		this.varaukset = varaukset;
 	}
 
 
+	
 	public long getAsiakasId() {
 		return asiakasId;
 	}
@@ -65,26 +71,6 @@ public class Asiakas {
 
 	public void setAsiakasId(long asiakasId) {
 		this.asiakasId = asiakasId;
-	}
-
-
-	public Postinumero getPostinumero() {
-		return postinumero;
-	}
-
-
-	public void setPostinumero(Postinumero postinumero) {
-		this.postinumero = postinumero;
-	}
-
-
-	public List<Varaus> getVaraukset() {
-		return varaukset;
-	}
-
-
-	public void setVaraukset(List<Varaus> varaukset) {
-		this.varaukset = varaukset;
 	}
 
 
@@ -137,12 +123,31 @@ public class Asiakas {
 		this.katuosoite = katuosoite;
 	}
 
+	
+	public Postinumero getPostinumero() {
+		return postinumero;
+	}
+
+
+	public void setPostinumero(Postinumero postinumero) {
+		this.postinumero = postinumero;
+	}
+
+
+	public List<Varaus> getVaraukset() {
+		return varaukset;
+	}
+
+
+	public void setVaraukset(List<Varaus> varaukset) {
+		this.varaukset = varaukset;
+	}
 
 	@Override
 	public String toString() {
 		return "Asiakas [asiakasId=" + asiakasId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", sposti="
 				+ sposti + ", puhelin=" + puhelin + ", katuosoite=" + katuosoite + ", postinumero=" + postinumero
-				+ ", varaukset=" + varaukset + "]";
+				+ ", varaukset=" + this.varaukset + "]";
 	}
 
 
