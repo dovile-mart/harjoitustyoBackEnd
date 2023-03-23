@@ -14,9 +14,9 @@ public class AsiakasController {
 	@Autowired
 	AsiakasRepository asiakasRepo;
 	
-	@GetMapping("/asiakkaat")
+	@GetMapping("/asiakkaat")			//http://localhost:8080/asiakkaat
 	public String listAsiakkaat(Model model) {
-		model.addAttribute("asiakas", new Asiakas());
+		model.addAttribute("asiakkaat", asiakasRepo.findAll());
 		return "asiakkaat";
 	}
 }
