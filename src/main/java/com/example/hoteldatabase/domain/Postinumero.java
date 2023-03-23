@@ -12,7 +12,7 @@ public class Postinumero {
 	
 	@Id
 	private String postinumero;
-	private String Postitoimipaikka;
+	private String postitoimipaikka;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "postinumero")
 	private List<Asiakas> asiakkaat;
@@ -29,7 +29,7 @@ public class Postinumero {
 	public Postinumero(String postinumero, String postitoimipaikka) {
 		super();
 		this.postinumero = postinumero;
-		Postitoimipaikka = postitoimipaikka;
+		this.postitoimipaikka = postitoimipaikka;
 	}
 
 
@@ -37,12 +37,12 @@ public class Postinumero {
 			List<Tyontekija> tyontekijat) {
 		super();
 		this.postinumero = postinumero;
-		Postitoimipaikka = postitoimipaikka;
+		this.postitoimipaikka = postitoimipaikka;
 		this.asiakkaat = asiakkaat;
 		this.tyontekijat = tyontekijat;
 	}
 
-
+/*
 	public List<Asiakas> getAsiakkaat() {
 		return asiakkaat;
 	}
@@ -60,7 +60,7 @@ public class Postinumero {
 
 	public void setTyontekijat(List<Tyontekija> tyontekijat) {
 		this.tyontekijat = tyontekijat;
-	}
+	}*/
 
 
 	public String getPostinumero() {
@@ -74,26 +74,38 @@ public class Postinumero {
 
 
 	public String getPostitoimipaikka() {
-		return Postitoimipaikka;
+		return postitoimipaikka;
+	}
+
+	public void setPostitoimipaikka(String postitoimipaikka) {
+		this.postitoimipaikka = postitoimipaikka;
+	}
+
+/*
+	@Override
+	public String toString() {
+		return "Postinumero [postinumero=" + postinumero + ", postitoimipaikka=" + postitoimipaikka + ", asiakkaat="
+				+ asiakkaat + ", tyontekijat=" + tyontekijat + "]";
+	}
+*/
+
+
+
+
+	public void setAsiakkaat(List<Asiakas> asiakkaat) {
+		this.asiakkaat = asiakkaat;
 	}
 
 
-	public void setPostitoimipaikka(String postitoimipaikka) {
-		Postitoimipaikka = postitoimipaikka;
+	public void setTyontekijat(List<Tyontekija> tyontekijat) {
+		this.tyontekijat = tyontekijat;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Postinumero [postinumero=" + postinumero + ", Postitoimipaikka=" + Postitoimipaikka + ", asiakkaat="
-				+ asiakkaat + ", tyontekijat=" + tyontekijat + "]";
+		return "Postinumero [postinumero=" + postinumero + ", postitoimipaikka=" + postitoimipaikka + "]";
 	}
-
-
-/*	@Override
-	public String toString() {
-		return "Postinumero [postinumero=" + postinumero + ", Postitoimipaikka=" + Postitoimipaikka + "]";
-	}*/
 	
 	
 }
