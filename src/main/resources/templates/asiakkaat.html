@@ -8,13 +8,13 @@
 <h1>Asiakkaat</h1>
 	<table>
 		<tr>
-			<th>AsiakasId</th>
 			<th>Etunimi</th>
 			<th>Sukunimi</th>
 			<th>Sposti</th>
 			<th>Puhelin</th>
 			<th>Osoite</th>
 			<th>Postinumero</th>
+			<th>Postitoimipaikka</th>
 		</tr>
 		<tr th:each = "asiakas : ${asiakkaat}">
 			<td th:text="${asiakas.etunimi}"></td>
@@ -22,7 +22,8 @@
 			<td th:text="${asiakas.sposti}"></td>
 			<td th:text="${asiakas.puhelin}"></td>
 			<td th:text="${asiakas.katuosoite}"></td>
-			<td th:text="${asiakas.postinumero}"></td>
+			<td th:text="${asiakas.postinumero.postinumero}"></td>
+			<td th:text="${asiakas.postinumero.postitoimipaikka}"></td>
 		</tr>
 	</table>
 </body>
