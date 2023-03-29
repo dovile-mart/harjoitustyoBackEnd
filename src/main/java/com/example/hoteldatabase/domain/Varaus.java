@@ -58,10 +58,10 @@ public class Varaus {
 		this.maksettu = maksettu;
 	}
 	
-	public Varaus(long varausId, Asiakas asiakas, Tyontekija tyontekija, LocalDateTime varausPvm, String lisatietoja,
+	public Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDateTime varausPvm, String lisatietoja,
 			int hinta, boolean maksettu, List<Huonevaraus> huonevaraukset) {
 		super();
-		this.varausId = varausId;
+//		this.varausId = varausId;
 		this.asiakas = asiakas;
 		this.tyontekija = tyontekija;
 		this.varausPvm = varausPvm;
@@ -70,7 +70,6 @@ public class Varaus {
 		this.maksettu = maksettu;
 		this.huonevaraukset = huonevaraukset;
 	}
-	
 	
 	
 	public long getVarausId() {
@@ -135,6 +134,13 @@ public class Varaus {
 		this.maksettu = maksettu;
 	}
 
+	
+	public List<Huonevaraus> getHuonevaraukset() {
+		return huonevaraukset;
+	}
+	public void setHuonevaraukset(List<Huonevaraus> huonevaraukset) {
+		this.huonevaraukset = huonevaraukset;
+	}
 	
 	@Override
 	public String toString() {

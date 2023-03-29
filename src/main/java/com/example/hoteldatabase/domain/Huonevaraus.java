@@ -1,6 +1,7 @@
 package com.example.hoteldatabase.domain;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+//import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,18 +24,28 @@ public class Huonevaraus {
 	@JoinColumn(name="huoneNro")
 	private Huone huone;
 
-	private LocalDateTime tuloPvm;
-	private LocalDateTime lahtoPvm;
+	private LocalDate tuloPvm;
+	private LocalDate lahtoPvm;
 	private int hloMaara;
 	private String lisatietoja;
 	private int hinta;
-	private Boolean maksettu;
+	private boolean maksettu;
 	
 	public Huonevaraus() {
 		super();
 	}
+	
+	public Huonevaraus(LocalDate tuloPvm, LocalDate lahtoPvm, int hloMaara,
+			String lisatietoja, int hinta) {
+		super();
+		this.tuloPvm = tuloPvm;
+		this.lahtoPvm = lahtoPvm;
+		this.hloMaara = hloMaara;
+		this.lisatietoja = lisatietoja;
+		this.hinta = hinta;
+	}
 
-	public Huonevaraus(long huoneVarausId, LocalDateTime tuloPvm, LocalDateTime lahtoPvm, int hloMaara,
+	public Huonevaraus(long huoneVarausId, LocalDate tuloPvm, LocalDate lahtoPvm, int hloMaara,
 			String lisatietoja, int hinta, Boolean maksettu) {
 		super();
 		this.huoneVarausId = huoneVarausId;
@@ -46,7 +57,7 @@ public class Huonevaraus {
 		this.maksettu = maksettu;
 	}
 
-	public Huonevaraus(long huoneVarausId, Varaus varaus, Huone huone, LocalDateTime tuloPvm, LocalDateTime lahtoPvm,
+	public Huonevaraus(long huoneVarausId, Varaus varaus, Huone huone, LocalDate tuloPvm, LocalDate lahtoPvm,
 			int hloMaara, String lisatietoja, int hinta, Boolean maksettu) {
 		super();
 		this.huoneVarausId = huoneVarausId;
@@ -85,19 +96,19 @@ public class Huonevaraus {
 		this.huoneVarausId = huoneVarausId;
 	}
 
-	public LocalDateTime getTuloPvm() {
+	public LocalDate getTuloPvm() {
 		return tuloPvm;
 	}
 
-	public void setTuloPvm(LocalDateTime tuloPvm) {
+	public void setTuloPvm(LocalDate tuloPvm) {
 		this.tuloPvm = tuloPvm;
 	}
 
-	public LocalDateTime getLahtoPvm() {
+	public LocalDate getLahtoPvm() {
 		return lahtoPvm;
 	}
 
-	public void setLahtoPvm(LocalDateTime lahtoPvm) {
+	public void setLahtoPvm(LocalDate lahtoPvm) {
 		this.lahtoPvm = lahtoPvm;
 	}
 
@@ -133,21 +144,21 @@ public class Huonevaraus {
 		this.maksettu = maksettu;
 	}
 
-	@Override
+/*		@Override
 	public String toString() {
 		return "Huonevaraus [huoneVarausId=" + huoneVarausId + ", varaus=" + varaus + ", huone=" + huone + ", tuloPvm="
 				+ tuloPvm + ", lahtoPvm=" + lahtoPvm + ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja
 				+ ", hinta=" + hinta + ", maksettu=" + maksettu + "]";
 	}
-
+*/
 	
 
-/*	@Override
+@Override
 	public String toString() {
 		return "Huonevaraus [huoneVarausId=" + huoneVarausId + ", tuloPvm=" + tuloPvm + ", lahtoPvm=" + lahtoPvm
 				+ ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu="
 				+ maksettu + "]";
-	}*/
+	}
 
 	
 	

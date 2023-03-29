@@ -13,13 +13,19 @@ public class Huone {
 	private String huoneNro;
 	private String huoneKuvaus;
 	private int hinta;
-	private boolean onkoVapaa;	
+	private boolean onkoVapaa = true;	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "huone")
 	private List<Huonevaraus> huonevaraukset;
 	
 	public Huone() {
 		super();
+	}
+	public Huone(String huoneNro, String huoneKuvaus, int hinta) {
+		super();
+		this.huoneNro = huoneNro;
+		this.huoneKuvaus = huoneKuvaus;
+		this.hinta = hinta;
 	}
 	
 	public Huone(String huoneNro, String huoneKuvaus, int hinta, boolean onkoVapaa) {
@@ -77,21 +83,21 @@ public class Huone {
 	public void setOnkoVapaa(boolean onkoVapaa) {
 		this.onkoVapaa = onkoVapaa;
 	}
-
+/*
 	@Override
 	public String toString() {
 		return "Huone [huoneNro=" + huoneNro + ", huoneKuvaus=" + huoneKuvaus + ", hinta=" + hinta + ", onkoVapaa="
 				+ onkoVapaa + ", huonevaraukset=" + huonevaraukset + "]";
 	}
 
+*/	
 	
 	
-/*	
 	@Override
 	public String toString() {
 		return "Huone [huoneNro=" + huoneNro + ", huoneKuvaus=" + huoneKuvaus + ", hinta=" + hinta + ", onkoVapaa="
 				+ onkoVapaa + "]";
-	}*/
+	}
 	
 	
 }
