@@ -16,7 +16,7 @@ public class TyontekijaController {
 	
 	@GetMapping("/tyontekijat")
 	public String listTyontekijat(Model model) {
-		model.addAttribute("tyontekija", new Tyontekija());
+		model.addAttribute("tyontekijat", tyontekijaRepo.findAll());
 		return "tyontekijat";
 	}
 }

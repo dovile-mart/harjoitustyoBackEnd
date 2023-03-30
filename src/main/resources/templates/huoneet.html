@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<title>Huoneet</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Huoneet</h1>
+	<table>
+		<tr>
+			<th>Huonenumero</th>
+			<th>Kuvaus</th>
+			<th>Hinta</th>
+			<th>Vapaa/Ei</th>
+		</tr>
+		<tr th:each = "huone : ${huoneet}">
+			<td th:text="${huone.huoneNro}"></td>
+			<td th:text="${huone.huoneKuvaus}"></td>
+			<td th:text="${huone.hinta}"></td>
+			<td th:text="${huone.onkoVapaa}"></td>
+		</tr>
+	</table>
+</body>
+</html>

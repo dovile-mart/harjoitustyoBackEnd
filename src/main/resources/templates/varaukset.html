@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<title>Varaukset</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Varaukset</h1>
+	<table>
+		<tr>
+			<th>Varaus id</th>
+			<th>Varauksen käsittelijä:</th>
+			<th>Asiakas</th>
+			<th>Varauspäivämäärä</th>
+			<th>Lisätietoja</th>
+			<th>Kokonaishinta</th>
+			<th>Maksettu/Ei</th>
+			<th>Varatut huoneet</th>
+		</tr>
+		<tr th:each = "varaus : ${varaukset}">
+			<td th:text="Varaus id: ${varaus.tyontekijaId}"></td>
+			<td th:text="${varaus.asiakasId}"></td>
+			<td th:text="${varaus.varaus_pvm}"></td>
+			<td th:text="${varaus.lisatietoja}"></td>
+			<td th:text="${varaus.hinta}"></td>
+			<td th:text="${varaus.maksettu}"></td>
+			<td th:text="${varaus.huonevaraus.huoneId}"></td>
+			<td th:text="${}"></td>
+		</tr>
+	</table>
+</body>
+</html>

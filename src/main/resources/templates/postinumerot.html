@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<title>Postinumerot</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Postinumerot</h1>
+	<table>
+		<tr>
+			<th>Postinumero</th>
+			<th>Postitoimipaikka</th>
+		</tr>
+		<tr th:each = "postinumero : ${postinumerot}">
+			<td th:text="${postinumero.postinumero}"></td>
+			<td th:text="${postinumero.postitoimipaikka}"></td>
+		</tr>
+	</table>
+</body>
+</html>
