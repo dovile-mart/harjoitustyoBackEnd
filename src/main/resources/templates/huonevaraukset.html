@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<title>Huonevaraukset</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">  -->
+<link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div>
+			<br> <br>
+			<a class="btn btn-info" href="/index" role="button">Etusivulle</a>
+			<a class="btn btn-warning" href="/" role="button">Tee jotain</a>
+			 <br> <br>
+		</div>
+		<div>
+			<h3>Honevaraukset</h3>
+			<div> <!-- class="card" -->
+				<table class="table table-bordered table-striped"> <!--table-responsive   -->
+					<tr>
+						<th>Huonevaraus Id</th>
+						<th>VarausId</th>
+						<th>Huone nro</th>
+						<th>Tulo pvm</th>
+						<th>Lähtö pvm</th>
+						<th>Hlö</th>
+						<th>Lisätiedot</th>
+						<th>Hinta</th>
+						<th>Maksettu</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr th:each = "huonevaraus : ${huonevaraukset}">
+						<td th:text="${huonevaraus.huonevarausId}"></td>
+				 		<td th:text="'${huonevaraus.varausId}'"></td>
+				 		<td th:text="${huonevaraus.huone.huoneNro}"></td>
+						<td th:text="'${huonevaraus.tuloPvm}'"></td>
+						<td th:text="'${huonevaraus.lahtoPvm}'"></td> 
+						<td th:text="${huonevaraus.hloMaara}"></td>
+						<td th:text="${huonevaraus.lisatietoja}"></td>
+						<td th:text="${huonevaraus.hinta}"></td>
+					 	<td th:text="${huonevaraus.maksettu}"></td> <!---->
+						<td><a th:href="@{/editHuonevaraus/{id}(id=${huonevaraus.huonevarausId})}" class="btn btn-outline-warning">Muokkaa</a></td>
+					<td><a th:href="@{/deleteHuonevaraus/{id}(id=${huonevaraus.huonevarausId})}" class="btn btn-outline-danger">Poista</a></td><!---->
+						<!-- <a th:href="@{/editAsiakas/{id}(id=${asiakas.id})}" class="btn btn-success"> 
+					</tr>-->
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -45,41 +45,15 @@ public class HoteldatabaseApplication {
 	@Autowired
 	HuoneRepository huoneRepo;
 	
+	@Autowired
+	HuonevarausRepository huonevarausRepo;
+	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(HoteldatabaseApplication.class, args);
 	}
-/*	@Bean
-	public CommandLineRunner demoPostinumerot(PostinumeroRepository postinumeroRepository) {
-		return (args) -> {
-			log.info("Luodaan demopostinumerot");
-			// Postinumero(String postinumero, String postitoimipaikka)
-			postinumeroRepository.save(new Postinumero("06100", "Porvoo"));
-			postinumeroRepository.save(new Postinumero("06500", "Porvoo"));
 
-			log.info("Haetaan kaikki postinumerot:");
-			for (Postinumero postinumero : postinumeroRepository.findAll()) {
-				log.info(postinumero.toString());
-			}
-		};
-	}
 
-	@Bean
-	public CommandLineRunner demoVaraukset(VarausRepository varausRepository,
-			AsiakasRepository asiakasRepo) {
-		return (args) -> {
-
-			log.info("Luodaan demovarauksia");
-			// Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDateTime varausPvm, String lisatietoja,int hinta, boolean maksettu, List<Huonevaraus> huonevaraukset)
-			varausRepository.save(new Varaus("Lisätietojen kenttä", 159, false));
-			//(10-12-2022, "Lisätietojen kenttä", 159, false)
-																			
-			log.info("Tulostetaan varaukset");
-			for (Varaus varaus : varausRepository.findAll()) {
-				log.info(varaus.toString());
-			}
-		};
-	}
-*/	
 	@Bean
 	public CommandLineRunner demoAsiakkaat(AsiakasRepository asiakasRepo, TyontekijaRepository tyontekijaRepo, PostinumeroRepository postinumeroRepo, VarausRepository varausRepo, HuoneRepository huoneRepo, HuonevarausRepository huonevarausRepo) {
 		return (args) -> {
@@ -93,68 +67,76 @@ public class HoteldatabaseApplication {
 				log.info(postinumero.toString());
 			}
 			
-			
-			log.info("Luodaan demoasiakkaita");
-			// Asiakas(String etunimi, String sukunimi, String sposti, String puhelin,
-			// String katuosoite, Postinumero postinumero, List<Varaus> varaukset)
-			asiakasRepo.save(new Asiakas("Matti", "Meikäläinen", "matti@mail.com", "019-123456", "Pilvikuja 2", postinumeroRepo.findByPostinumero("06500").get(0)));// ,
-			asiakasRepo.save(new Asiakas("Joona", "Seppälä", "joona@mail.com", "050-123456", "Pilvitie 13", postinumeroRepo.findByPostinumero("06100").get(0)));
-			log.info("Tulostetaan asiakkaat");
-			for (Asiakas asiakas : asiakasRepo.findAll()) {
-				log.info(asiakas.toString());
-			}
-
-			
-			log.info("Luodaan demotyontekijoita");
-			// Tyontekija(String etunimi, String sukunimi, String sposti, String puhelin, String katuosoite, Postinumero postinumero, List<Varaus> varaukset)
-			tyontekijaRepo.save(new Tyontekija("Seppo", "Seppolainen", "seppo@mail.com", "019-1111111", "Pilvikatu 42", postinumeroRepo.findByPostinumero("06100").get(0)));// ,, varausRepo.findById(0)
-			tyontekijaRepo.save(new Tyontekija("Katri", "Kekkilä", "katri@mail.com", "040-1222233", "Hiihtäjäntie 3", postinumeroRepo.findByPostinumero("06500").get(0)));
-			log.info("Tulostetaan tyontekijat");
-			for (Tyontekija tyontekija : tyontekijaRepo.findAll()) {
-				log.info(tyontekija.toString());
-			}
-			
-			
+						
 			log.info("Luodaan demohuoneita");
 			//String huoneNro, String huoneKuvaus, int hinta, boolean onkoVapaa
 			huoneRepo.save(new Huone("101", "Huoneen 101 kuvaus", 90, true));
 			huoneRepo.save(new Huone("102", "Huoneen 102 kuvaus", 110, false));
 			huoneRepo.save(new Huone("103", "Huoneen 103 kuvaus", 95, true));
-			log.info("Tulostetaan demohuoneet");
+			log.info("Tulostetaan huoneet:");
 			for (Huone huone : huoneRepo.findAll()) {
 				log.info(huone.toString());
 			}
 			
+			
 			log.info("Luodaan demohuonevarauksia");
 			//Huonevaraus(LocalDateTime tuloPvm, LocalDateTime lahtoPvm, int hloMaara,String lisatietoja, int hinta, Boolean maksettu)
-			//huonevarausRepo.save(new Huonevaraus(LocalDate.of(2023,3,23),LocalDate.of(2023,3,25), 2, "Lisätietoja huonevarauksesta", 180, false));
-			huonevarausRepo.save(new Huonevaraus()); 
-			huonevarausRepo.save(new Huonevaraus()); 
+			//Huonevaraus(Huone huone, int hloMaara, String lisatietoja, int hinta, boolean maksettu)
+			huonevarausRepo.save(new Huonevaraus(huoneRepo.findByHuoneNro("101").get(0), 2, "Lisätiedot huoneen 101 huonevarauksesta", 120, false)); 
+			huonevarausRepo.save(new Huonevaraus(huoneRepo.findByHuoneNro("103").get(0), 1, "Lisätiedot huoneen 103 huonevarauksesta", 90, true)); 
 //			huonevarausRepo.save(new Huonevaraus(LocalDate.of(2023,3,23),LocalDate.of(2023,3,25), 2, "Lisätietoja huonevarauksesta", 180, false));//, false
 
-			//		huonevarausRepo.save(new Huonevaraus("102", "Huoneen 102 kuvaus", 110));//, false
-	//		huonevarausRepo.save(new Huonevaraus("103", "Huoneen 103 kuvaus", 90));//, false
-			log.info("Tulostetaan demohuonevaraukset");
-		//	for (Huonevaraus huonevaraus : huonevarausRepo.findAll()) {
-		//		log.info(huonevaraus.toString());
-		//	}
+			log.info("Tulostetaan huonevaraukset");
+			for (Huonevaraus huonevaraus : huonevarausRepo.findAll()) {
+				log.info(huonevaraus.toString());
+			}
+						
+
 			
+			log.info("Luodaan demoasiakkaita");
+			// Asiakas(String etunimi, String sukunimi, String sposti, String puhelin,
+			// String katuosoite, Postinumero postinumero, List<Varaus> varaukset)
+			asiakasRepo.save(new Asiakas("Matti", "Meikäläinen", "matti@mail.com", "019-123456", "Pilvikuja 2", postinumeroRepo.findByPostinumero("06500").get(0)));//, varausRepo.findByVarausId(1).get(0)));// ,
+			asiakasRepo.save(new Asiakas("Joona", "Seppälä", "joona@mail.com", "050-123456", "Pilvitie 13", postinumeroRepo.findByPostinumero("06100").get(0)));
+			log.info("Tulostetaan asiakkaat:");
+			for (Asiakas asiakas : asiakasRepo.findAll()) {
+				log.info(asiakas.toString());
+			}
+					
 			
+			log.info("Luodaan demotyöntekijöitä");
+			// Tyontekija(String etunimi, String sukunimi, String sposti, String puhelin, String katuosoite, Postinumero postinumero, List<Varaus> varaukset)
+			tyontekijaRepo.save(new Tyontekija("Seppo", "Seppolainen", "seppo@mail.com", "019-1111111", "Pilvikatu 42", postinumeroRepo.findByPostinumero("06100").get(0)));// ,, varausRepo.findById(0)
+			tyontekijaRepo.save(new Tyontekija("Katri", "Kekkilä", "katri@mail.com", "040-1222233", "Hiihtäjäntie 3", postinumeroRepo.findByPostinumero("06500").get(0)));
+			log.info("Tulostetaan tyontekijat:");
+			for (Tyontekija tyontekija : tyontekijaRepo.findAll()) {
+				log.info(tyontekija.toString());
+			}
+								
 			log.info("Luodaan demovarauksia");
+			//Varaus(String lisatietoja, int hinta, boolean maksettu, List<Huonevaraus> huonevaraukset
+			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Seppo").get(0),"Lisätiedot",120));
+			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Katri").get(0),"Lisätiedot testi2",130));
+
+			//			varausRepo.save(new Varaus(asiakasRepo.findById(1), tyontekijaRepo.findById(1), "Lisätietoja toisesta varauksesta", 130));
+//			varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(null), tyontekijaRepo.findByTyontekijaId(null), "Lisätiedot 3:sta varauksesta", huoneRepo.findByHuoneNro("101")));
 			// Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDateTime varausPvm, String lisatietoja,int hinta, boolean maksettu, List<Huonevaraus> huonevaraukset)
 	//		varausRepo.save(new Varaus(asiakasRepo.findByVarausId(varausId), "Lisätietojen kenttä", 159, false));
 //KESKEN!!! 			varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(1).get(0), ));
 			//(10-12-2022, "Lisätietojen kenttä", 159, false)
 	//		varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(1).get(0), tyontekijaRepo.findById(1).get(0), null, "Lisätietoja varauksesta", 120, false, huonevarausRepo.findById().size(0)));
-	//		varausRepo.save(new Varaus());
-	//		varausRepo.save(new Varaus());
+//			varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(1), tyontekijaRepo.findByTyontekijaEtunimi("Seppo").get(0), "Lisätiedot varauksesta", 120, 1 ));
+//			varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(null), tyontekijaRepo.findByEtunimi("Seppo").get(0), "Lisätiedot varauksesta", 120));
+//			varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(1).get(0), tyontekijaRepo.findById(null),"Lisätietoja varauksesta", 500);
+
+			//varausRepo.save(new Varaus());
 			log.info("Tulostetaan varaukset");
 			for (Varaus varaus : varausRepo.findAll()) {
 				log.info(varaus.toString());
 			}
-		};
+			
+		};	
+
 	}
-
-
 
 }

@@ -3,30 +3,46 @@
 <head>
 <title>Varaukset</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
-<h1>Varaukset</h1>
-	<table>
-		<tr>
-			<th>Varaus id</th>
-			<th>Varauksen käsittelijä:</th>
-			<th>Asiakas</th>
-			<th>Varauspäivämäärä</th>
-			<th>Lisätietoja</th>
-			<th>Kokonaishinta</th>
-			<th>Maksettu/Ei</th>
-			<th>Varatut huoneet</th>
-		</tr>
-		<tr th:each = "varaus : ${varaukset}">
-			<td th:text="Varaus id: ${varaus.tyontekijaId}"></td>
-			<td th:text="${varaus.asiakasId}"></td>
-			<td th:text="${varaus.varaus_pvm}"></td>
-			<td th:text="${varaus.lisatietoja}"></td>
-			<td th:text="${varaus.hinta}"></td>
-			<td th:text="${varaus.maksettu}"></td>
-			<td th:text="${varaus.huonevaraus.huoneId}"></td>
-			<td th:text="${}"></td>
-		</tr>
-	</table>
+	<div class="container">
+		<div>
+			<br> <br>
+			<a class="btn btn-info" href="/index" role="button">Etusivulle</a>
+			<a class="btn btn-warning" href="/" role="button">Tee jotain</a>
+			 <br> <br>
+		</div>
+		<div>
+			<h1>Varaukset</h1>
+				<table class="table table-bordered table-striped">
+					<tr>
+						<th>Varaus id</th>
+						<th>Varauksen käsittelijä:</th>
+						<th>Asiakas</th>
+						<th>Varauspäivämäärä</th>
+						<th>Lisätietoja</th>
+						<th>Kokonaishinta</th>
+						<th>Maksettu</th>
+						<th>Varatut huoneet</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr th:each = "varaus : ${varaukset}">
+						<td th:text="'Varaus id: ' + ${varaus.varausId}"></td>
+						<td th:text="${varaus.tyontekija.etunimi} + ' ' + ${varaus.tyontekija.sukunimi}"></td>
+						<td th:text="${varaus.asiakas.etunimi} + ' ' + ${varaus.asiakas.sukunimi}"></td>
+						<td th:text="'päivämäärä'"></td>
+						<td th:text="${varaus.lisatietoja}"></td>
+						<td th:text="${varaus.hinta}"></td>
+						<td th:text="${varaus.maksettu}"></td>
+						<td th:text="'${varaus} varauksen kaikki tiedot'"></td>
+						<td><a th:href="@{/editVaraus/{id}(id=${varaus.varausId})}" class="btn btn-outline-warning">Muokkaa</a></td>
+					<td><a th:href="@{/deleteVaraus/{id}(id=${varaus.varausId})}" class="btn btn-outline-danger">Poista</a></td>
+						<!--<td th:text="${}"></td> -->
+					</tr>
+				</table>
+		</div>
+	</div>
 </body>
 </html>

@@ -6,4 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface VarausRepository extends CrudRepository<Varaus, Long>{
 List<Varaus> findByVarausId(Long varausId);
+//List<Varaus> findByHuonevarausId(Huonevaraus huonevarausId);
+//List<Varaus> findByAsiakasId(Long asiakasId);
+//List<Varaus> findByTyontekijaId(Long tyontekijaId);
+//List<Varaus> findByAsiakasIdAndTyontekijaId(Long asiakasId, Long tyontekijaId);
+
 }

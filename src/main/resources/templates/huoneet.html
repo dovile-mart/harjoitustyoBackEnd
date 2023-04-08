@@ -3,22 +3,35 @@
 <head>
 <title>Huoneet</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
-<h1>Huoneet</h1>
-	<table>
-		<tr>
-			<th>Huonenumero</th>
-			<th>Kuvaus</th>
-			<th>Hinta</th>
-			<th>Vapaa/Ei</th>
-		</tr>
-		<tr th:each = "huone : ${huoneet}">
-			<td th:text="${huone.huoneNro}"></td>
-			<td th:text="${huone.huoneKuvaus}"></td>
-			<td th:text="${huone.hinta}"></td>
-			<td th:text="${huone.onkoVapaa}"></td>
-		</tr>
-	</table>
+	<div class="container">
+		<div>
+			<br> <br>
+			<a class="btn btn-info" href="/index" role="button">Etusivulle</a>
+			<a class="btn btn-warning" href="/" role="button">Tee jotain</a>
+			 <br> <br>
+		</div>
+		<div>
+			<h3>Huoneet</h3>
+			<div class="card">
+				<table class="table table-bordered table-striped">
+					<tr>
+						<th>Huonenumero</th>
+						<th>Kuvaus</th>
+						<th>Hinta</th>
+						<th>Vapaa</th>
+					</tr>
+					<tr th:each = "huone : ${huoneet}">
+						<td th:text="${huone.huoneNro}"></td>
+						<td th:text="${huone.huoneKuvaus}"></td>
+						<td th:text="${huone.hinta} + ' €'"></td>
+						<td th:text="${huone.onkoVapaa}"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

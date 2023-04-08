@@ -2,6 +2,8 @@ package com.example.hoteldatabase.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -16,6 +18,7 @@ public class Huone {
 	private boolean onkoVapaa = true;	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "huone")
+	@JsonIgnore
 	private List<Huonevaraus> huonevaraukset;
 	
 	public Huone() {

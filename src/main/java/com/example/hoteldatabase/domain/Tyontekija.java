@@ -2,9 +2,10 @@ package com.example.hoteldatabase.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,7 +17,7 @@ import jakarta.persistence.OneToMany;
 public class Tyontekija {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long tyontekijaId;
+	private Long tyontekijaId;
 	private String etunimi;
 	private String sukunimi;
 	private String sposti;
@@ -28,6 +29,7 @@ public class Tyontekija {
 	private Postinumero postinumero;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "tyontekija")//(fetch = FetchType.EAGER)
+	@JsonIgnore
 	private List<Varaus> varaukset;
 	
 	
@@ -81,17 +83,17 @@ public class Tyontekija {
 	}
 
 
-	public void setTyontekijaId(long tyontekijaId) {
+	public void setTyontekijaId(Long tyontekijaId) {
 		this.tyontekijaId = tyontekijaId;
 	}
 
 
-	public long getTyontekijaId() {
+	public Long getTyontekijaId() {
 		return tyontekijaId;
 	}
 
 
-	public void setId(long tyontekijaId) {
+	public void setId(Long tyontekijaId) {
 		this.tyontekijaId = tyontekijaId;
 	}
 

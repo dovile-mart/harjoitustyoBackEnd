@@ -14,7 +14,7 @@ import jakarta.persistence.ManyToOne;
 public class Huonevaraus {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long huoneVarausId;
+	private Long huonevarausId;
 	
 	@ManyToOne
 	@JoinColumn(name="varausId")
@@ -35,6 +35,23 @@ public class Huonevaraus {
 		super();
 	}
 	
+	public Huonevaraus(Huone huone, int hloMaara,
+			String lisatietoja, int hinta) {
+		super();
+		this.hloMaara = hloMaara;
+		this.lisatietoja = lisatietoja;
+		this.hinta = hinta;
+	}
+	
+	public Huonevaraus(Huone huone, int hloMaara, String lisatietoja, int hinta, boolean maksettu) {
+		super();
+		this.huone = huone;
+		this.hloMaara = hloMaara;
+		this.lisatietoja = lisatietoja;
+		this.hinta = hinta;
+		this.maksettu = maksettu;
+	}
+
 	public Huonevaraus(LocalDate tuloPvm, LocalDate lahtoPvm, int hloMaara,
 			String lisatietoja, int hinta) {
 		super();
@@ -45,10 +62,10 @@ public class Huonevaraus {
 		this.hinta = hinta;
 	}
 
-	public Huonevaraus(long huoneVarausId, LocalDate tuloPvm, LocalDate lahtoPvm, int hloMaara,
-			String lisatietoja, int hinta, Boolean maksettu) {
+	public Huonevaraus(LocalDate tuloPvm, LocalDate lahtoPvm, int hloMaara,
+			String lisatietoja, int hinta, boolean maksettu) {
 		super();
-		this.huoneVarausId = huoneVarausId;
+
 		this.tuloPvm = tuloPvm;
 		this.lahtoPvm = lahtoPvm;
 		this.hloMaara = hloMaara;
@@ -57,10 +74,9 @@ public class Huonevaraus {
 		this.maksettu = maksettu;
 	}
 
-	public Huonevaraus(long huoneVarausId, Varaus varaus, Huone huone, LocalDate tuloPvm, LocalDate lahtoPvm,
-			int hloMaara, String lisatietoja, int hinta, Boolean maksettu) {
+	public Huonevaraus(Varaus varaus, Huone huone, LocalDate tuloPvm, LocalDate lahtoPvm,
+			int hloMaara, String lisatietoja, int hinta, boolean maksettu) {
 		super();
-		this.huoneVarausId = huoneVarausId;
 		this.varaus = varaus;
 		this.huone = huone;
 		this.tuloPvm = tuloPvm;
@@ -88,12 +104,12 @@ public class Huonevaraus {
 	}
 
 
-	public long getHuoneVarausId() {
-		return huoneVarausId;
+	public Long getHuonevarausId() {
+		return huonevarausId;
 	}
 
-	public void setHuoneVarausId(long huoneVarausId) {
-		this.huoneVarausId = huoneVarausId;
+	public void setHuonevarausId(Long huonevarausId) {
+		this.huonevarausId = huonevarausId;
 	}
 
 	public LocalDate getTuloPvm() {
@@ -136,30 +152,37 @@ public class Huonevaraus {
 		this.hinta = hinta;
 	}
 
-	public Boolean getMaksettu() {
+	public boolean getMaksettu() {
 		return maksettu;
 	}
 
-	public void setMaksettu(Boolean maksettu) {
+	public void setMaksettu(boolean maksettu) {
 		this.maksettu = maksettu;
 	}
 
+
+
 /*		@Override
 	public String toString() {
-		return "Huonevaraus [huoneVarausId=" + huoneVarausId + ", varaus=" + varaus + ", huone=" + huone + ", tuloPvm="
+		return "Huonevaraus [huonevarausId=" + huonevarausId + ", varaus=" + varaus + ", huone=" + huone + ", tuloPvm="
 				+ tuloPvm + ", lahtoPvm=" + lahtoPvm + ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja
 				+ ", hinta=" + hinta + ", maksettu=" + maksettu + "]";
 	}
-*/
+
 	
 
 @Override
 	public String toString() {
-		return "Huonevaraus [huoneVarausId=" + huoneVarausId + ", tuloPvm=" + tuloPvm + ", lahtoPvm=" + lahtoPvm
+		return "Huonevaraus [huonevarausId=" + huonevarausId + ", tuloPvm=" + tuloPvm + ", lahtoPvm=" + lahtoPvm
 				+ ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu="
 				+ maksettu + "]";
 	}
-
+*/
+@Override
+	public String toString() {
+		return "Huonevaraus [huonevarausId=" + huonevarausId + ", varaus=" + varaus + " huone=" + huone + ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu="
+				+ maksettu + "]";
+	}
 	
 	
 }
