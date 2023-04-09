@@ -73,7 +73,17 @@ public class Huonevaraus {
 		this.hinta = hinta;
 		this.maksettu = maksettu;
 	}
-
+	public Huonevaraus(Huone huone, LocalDate tuloPvm, LocalDate lahtoPvm,
+			int hloMaara, String lisatietoja, int hinta, boolean maksettu) {
+		super();
+		this.huone = huone;
+		this.tuloPvm = tuloPvm;
+		this.lahtoPvm = lahtoPvm;
+		this.hloMaara = hloMaara;
+		this.lisatietoja = lisatietoja;
+		this.hinta = hinta;
+		this.maksettu = maksettu;
+	}
 	public Huonevaraus(Varaus varaus, Huone huone, LocalDate tuloPvm, LocalDate lahtoPvm,
 			int hloMaara, String lisatietoja, int hinta, boolean maksettu) {
 		super();
@@ -170,18 +180,12 @@ public class Huonevaraus {
 	}
 
 	
+*/
 
 @Override
 	public String toString() {
-		return "Huonevaraus [huonevarausId=" + huonevarausId + ", tuloPvm=" + tuloPvm + ", lahtoPvm=" + lahtoPvm
-				+ ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu="
-				+ maksettu + "]";
-	}
-*/
-@Override
-	public String toString() {
-		return "Huonevaraus [huonevarausId=" + huonevarausId + ", varaus=" + varaus + " huone=" + huone + ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu="
-				+ maksettu + "]";
+		return "Huonevaraus [huonevarausId=" + huonevarausId + ", varaus=" + varaus + " huone=" + huone + ", tuloPvm=" + tuloPvm + ", lahtoPvm=" + lahtoPvm
+				 + ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu=" + maksettu + "]";
 	}
 	
 	

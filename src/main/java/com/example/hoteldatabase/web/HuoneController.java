@@ -24,8 +24,8 @@ public class HuoneController {
 		//huonelistaus
 		@GetMapping("/huoneet")			//http://localhost:8080/huoneet
 		public String listHuoneet(Model model) {
-			model.addAttribute("huoneet", huoneRepo.findAll());
-			return "huoneet";
+			model.addAttribute("huoneet", huoneRepo.findAll()); //huoneet - olio jonka thymeleaf käyttää
+			return "huoneet";		//huoneet.html kutsu
 		}
 		
 		//huoneen luonti

@@ -1,5 +1,6 @@
 package com.example.hoteldatabase.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class Varaus {
 	private Tyontekija tyontekija;
 	
 	@Column(name="varaus_pvm")
-	private LocalDateTime varausPvm;
+	private LocalDate varausPvm; //LocalDateTime
 	
 	private String lisatietoja;
 	private int hinta;
@@ -50,7 +51,7 @@ public class Varaus {
 		super();
 	}
 //riisuttu versio	
-	public Varaus(Asiakas asiakas, Tyontekija tyontekija, String lisatietoja, int hinta) {//, boolean maksettu) {
+	public Varaus(Asiakas asiakas, Tyontekija tyontekija, String lisatietoja, int hinta, boolean maksettu) {
 		super();
 		this.asiakas = asiakas;
 		this.tyontekija = tyontekija;
@@ -60,6 +61,20 @@ public class Varaus {
 	//	this.maksettu = maksettu;
 	}
 	
+	
+	
+	public Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDate varausPvm, String lisatietoja, int hinta,
+			boolean maksettu) {
+		super();
+		this.asiakas = asiakas;
+		this.tyontekija = tyontekija;
+		this.varausPvm = varausPvm;
+		this.lisatietoja = lisatietoja;
+		this.hinta = hinta;
+		this.maksettu = maksettu;
+	}
+	
+	
 	public Varaus(String lisatietoja, int hinta, boolean maksettu, List<Huonevaraus> huonevaraukset) {
 		super();
 		this.lisatietoja = lisatietoja;
@@ -67,10 +82,10 @@ public class Varaus {
 		this.maksettu = maksettu;
 		this.huonevaraukset = huonevaraukset;
 	}
-	public Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDateTime varausPvm, String lisatietoja,
+	
+	public Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDate varausPvm, String lisatietoja,
 			int hinta, boolean maksettu, List<Huonevaraus> huonevaraukset) {
 		super();
-//		this.varausId = varausId;
 		this.asiakas = asiakas;
 		this.tyontekija = tyontekija;
 		this.varausPvm = varausPvm;
@@ -109,11 +124,11 @@ public class Varaus {
 	}
 
 	
-	public LocalDateTime getVarausPvm() {
+	public LocalDate getVarausPvm() {
 		return varausPvm;
 	}
 
-	public void setVarausPvm(LocalDateTime varausPvm) {
+	public void setVarausPvm(LocalDate varausPvm) {
 		this.varausPvm = varausPvm;
 	}
 
@@ -151,14 +166,14 @@ public class Varaus {
 	public void setHuonevaraukset(List<Huonevaraus> huonevaraukset) {
 		this.huonevaraukset = huonevaraukset;
 	}
-	@Override
+/*	@Override
 	public String toString() {
 		return "Varaus [varausId=" + varausId + ", asiakas=" + asiakas + ", tyontekija=" + tyontekija + ", lisatietoja="
 				+ lisatietoja + ", hinta=" + hinta +"]";
 	}
 	
 	
-/*	@Override
+	@Override
 	public String toString() {
 		return "Varaus [varausId=" + varausId + ", asiakas=" + asiakas + ", tyontekija=" + tyontekija + ", varausPvm="
 				+ varausPvm + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu=" + maksettu
@@ -170,6 +185,12 @@ public class Varaus {
 		return "Varaus [varausId=" + varausId + ", varausPvm=" + varausPvm + ", lisatietoja=" + lisatietoja
 				+ ", hinta=" + hinta + ", maksettu=" + maksettu + "]";
 	}*/
+	@Override
+	public String toString() {
+		return "Varaus [varausId=" + varausId + ", asiakas=" + asiakas + ", tyontekija=" + tyontekija + ", varausPvm="
+				+ varausPvm + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu=" + maksettu
+				+ "]"; //ei huonevarauksia tänne
+	}
 	
 	
 }

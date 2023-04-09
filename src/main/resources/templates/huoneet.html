@@ -10,7 +10,7 @@
 		<div>
 			<br> <br>
 			<a class="btn btn-info" href="/index" role="button">Etusivulle</a>
-			<a class="btn btn-warning" href="/" role="button">Tee jotain</a>
+			<a class="btn btn-warning" href="/addHuone" role="button">Lisää huone</a>
 			 <br> <br>
 		</div>
 		<div>
@@ -22,12 +22,16 @@
 						<th>Kuvaus</th>
 						<th>Hinta</th>
 						<th>Vapaa</th>
+						<th></th>
+						<th></th>
 					</tr>
 					<tr th:each = "huone : ${huoneet}">
 						<td th:text="${huone.huoneNro}"></td>
 						<td th:text="${huone.huoneKuvaus}"></td>
 						<td th:text="${huone.hinta} + ' €'"></td>
 						<td th:text="${huone.onkoVapaa}"></td>
+						<td><a th:href="@{/editHuone/{id}(id=${huone.huoneNro})}" class="btn btn-outline-warning">Muokkaa</a></td>
+					<td><a th:href="@{/deleteHuone/{id}(id=${huone.huoneNro})}" class="btn btn-outline-danger">Poista</a></td>
 					</tr>
 				</table>
 			</div>

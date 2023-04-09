@@ -82,8 +82,8 @@ public class HoteldatabaseApplication {
 			log.info("Luodaan demohuonevarauksia");
 			//Huonevaraus(LocalDateTime tuloPvm, LocalDateTime lahtoPvm, int hloMaara,String lisatietoja, int hinta, Boolean maksettu)
 			//Huonevaraus(Huone huone, int hloMaara, String lisatietoja, int hinta, boolean maksettu)
-			huonevarausRepo.save(new Huonevaraus(huoneRepo.findByHuoneNro("101").get(0), 2, "Lisätiedot huoneen 101 huonevarauksesta", 120, false)); 
-			huonevarausRepo.save(new Huonevaraus(huoneRepo.findByHuoneNro("103").get(0), 1, "Lisätiedot huoneen 103 huonevarauksesta", 90, true)); 
+			huonevarausRepo.save(new Huonevaraus(huoneRepo.findByHuoneNro("101").get(0), LocalDate.of(2023, 1, 23), LocalDate.of(2023, 1, 24), 2, "Lisätiedot huoneen 101 huonevarauksesta", 120, false)); 
+			huonevarausRepo.save(new Huonevaraus(huoneRepo.findByHuoneNro("103").get(0), LocalDate.of(2023, 1, 23), LocalDate.of(2023, 1, 25), 1, "Lisätiedot huoneen 103 huonevarauksesta", 90, true)); 
 //			huonevarausRepo.save(new Huonevaraus(LocalDate.of(2023,3,23),LocalDate.of(2023,3,25), 2, "Lisätietoja huonevarauksesta", 180, false));//, false
 
 			log.info("Tulostetaan huonevaraukset");
@@ -113,11 +113,15 @@ public class HoteldatabaseApplication {
 				log.info(tyontekija.toString());
 			}
 								
-			log.info("Luodaan demovarauksia");
+			log.info("Luodaan demovarauksia");//LocalDate.of(2023, 7, 23)
 			//Varaus(String lisatietoja, int hinta, boolean maksettu, List<Huonevaraus> huonevaraukset
-			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Seppo").get(0),"Lisätiedot",120));
-			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Katri").get(0),"Lisätiedot testi2",130));
+//			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Seppo").get(0),"Lisätiedot",120));
+//			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Katri").get(0),"Lisätiedot testi2",130));
 
+			//Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDate varausPvm, String lisatietoja, int hinta, boolean maksettu)
+			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Seppo").get(0), LocalDate.of(2023, 1, 23), "Lisätiedot varauksesta", 150, false));
+			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Joona").get(0), tyontekijaRepo.findByEtunimi("Katri").get(0), LocalDate.of(2023, 1, 24), "Lisätiedot varauksesta", 150, false));
+			
 			//			varausRepo.save(new Varaus(asiakasRepo.findById(1), tyontekijaRepo.findById(1), "Lisätietoja toisesta varauksesta", 130));
 //			varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(null), tyontekijaRepo.findByTyontekijaId(null), "Lisätiedot 3:sta varauksesta", huoneRepo.findByHuoneNro("101")));
 			// Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDateTime varausPvm, String lisatietoja,int hinta, boolean maksettu, List<Huonevaraus> huonevaraukset)
