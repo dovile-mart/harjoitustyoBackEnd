@@ -10,21 +10,21 @@
 	<h1>Muokkaa huonetta</h1>
 	<div>
 	<form th:object="${editHuone}" th:action="@{/saveHuone}" action="#" method="post">
-		  	<div>
-				<input type="hidden" id="huoneNro" th:field="*{huoneNro}" />
-			</div>
+		<!--		
+				<input type="text" id="huoneNro" th:field="*{id}" />
+  	-->
 			<div>
 			  	<label>Kuvaus</label>
-				<input type="text" th:field="*{kuvaus}" />
+		<!--		<input type="text" th:field="*{huoneKuvaus}" />-->
 			</div>
 			<div>
 			  	<label>Hinta</label>
-			  	<input type="number" th:field="*{hinta}" />
+		<!--	  	<input type="number" th:field="*{hinta}" />-->
 			</div>
-			<div>
+		<!--	<div>
 			  	<label>Vapaa</label>
 				<input type="text" th:field="'*{onkoVapaa}'" />
-			</div><br>
+			</div><br>-->
 			
 		  	
 						
