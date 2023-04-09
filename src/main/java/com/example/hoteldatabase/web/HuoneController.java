@@ -46,7 +46,7 @@ public class HuoneController {
 	
 		
 		//huoneen tallennus+validointi
-		@PostMapping("/saveHuone")
+		@PostMapping("saveHuone")
 		public String saveHuone( Huone huone, BindingResult bindingResult) { //@Valid
 			log.info("HuoneController: validoinnin tarkistus, huone: " + huone);
 			if(bindingResult.hasErrors()) {
