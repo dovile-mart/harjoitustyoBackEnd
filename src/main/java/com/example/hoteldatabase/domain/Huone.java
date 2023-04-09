@@ -27,6 +27,8 @@ public class Huone {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "huone")
 	@JsonIgnore
 	private List<Huonevaraus> huonevaraukset;
+
+	
 	
 	public Huone() {
 		super();
@@ -55,13 +57,7 @@ public class Huone {
 		this.huonevaraukset = huonevaraukset;
 	}
 
-	public List<Huonevaraus> getHuonevaraukset() {
-		return huonevaraukset;
-	}
 
-	public void setHuonevaraukset(List<Huonevaraus> huonevaraukset) {
-		this.huonevaraukset = huonevaraukset;
-	}
 
 	public String getHuoneNro() {
 		return huoneNro;
@@ -92,6 +88,14 @@ public class Huone {
 
 	public void setOnkoVapaa(boolean onkoVapaa) {
 		this.onkoVapaa = onkoVapaa;
+	}
+	
+	public List<Huonevaraus> getHuonevaraukset() {
+		return huonevaraukset;
+	}
+
+	public void setHuonevaraukset(List<Huonevaraus> huonevaraukset) {
+		this.huonevaraukset = huonevaraukset;
 	}
 /*
 	@Override

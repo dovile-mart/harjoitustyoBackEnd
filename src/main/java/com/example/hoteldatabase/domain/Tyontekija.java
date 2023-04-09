@@ -53,42 +53,30 @@ public class Tyontekija {
 
 
 	public Tyontekija(String etunimi, String sukunimi, String sposti, String puhelin,
-			String katuosoite, Postinumero postinumero){//, List<Varaus> varaukset) {
+			String katuosoite, Postinumero postinumero){
 		super();
-		//this.tyontekijaId = tyontekijaId;
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
 		this.sposti = sposti;
 		this.puhelin = puhelin;
 		this.katuosoite = katuosoite;
 		this.postinumero = postinumero;
-//		this.varaukset = varaukset;
 	}
 
-
-	public Postinumero getPostinumero() {
-		return postinumero;
-	}
-
-
-	public void setPostinumero(Postinumero postinumero) {
+	public Tyontekija(String etunimi, String sukunimi, String sposti, String puhelin,
+			String katuosoite, Postinumero postinumero, List<Varaus> varaukset) {
+		super();
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		this.sposti = sposti;
+		this.puhelin = puhelin;
+		this.katuosoite = katuosoite;
 		this.postinumero = postinumero;
-	}
-
-
-	public List<Varaus> getVaraukset() {
-		return varaukset;
-	}
-
-
-	public void setVaraukset(List<Varaus> varaukset) {
 		this.varaukset = varaukset;
 	}
 
-
-	public void setTyontekijaId(Long tyontekijaId) {
-		this.tyontekijaId = tyontekijaId;
-	}
+	
+	
 
 
 	public Long getTyontekijaId() {
@@ -96,7 +84,7 @@ public class Tyontekija {
 	}
 
 
-	public void setId(Long tyontekijaId) {
+	public void setTyontekijaId(Long tyontekijaId) {
 		this.tyontekijaId = tyontekijaId;
 	}
 
@@ -150,6 +138,26 @@ public class Tyontekija {
 		this.katuosoite = katuosoite;
 	}
 
+	public Postinumero getPostinumero() {
+		return postinumero;
+	}
+
+
+	public void setPostinumero(Postinumero postinumero) {
+		this.postinumero = postinumero;
+	}
+
+
+	public List<Varaus> getVaraukset() {
+		return varaukset;
+	}
+
+
+	public void setVaraukset(List<Varaus> varaukset) {
+		this.varaukset = varaukset;
+	}
+
+
 
 	@Override
 	public String toString() {
@@ -159,13 +167,4 @@ public class Tyontekija {
 	}
 
 
-/*
-
-	@Override
-	public String toString() {
-		return "Tyontekija [tyontekijaId=" + tyontekijaId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", sposti=" + sposti
-				+ ", puhelin=" + puhelin + ", katuosoite=" + katuosoite + "]";
-	}
-	
-	*/
 }

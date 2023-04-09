@@ -25,6 +25,7 @@ public class Postinumero {
 	private List<Tyontekija> tyontekijat;
 
 	
+	
 	public Postinumero() {
 		super();
 	}
@@ -46,25 +47,6 @@ public class Postinumero {
 		this.tyontekijat = tyontekijat;
 	}
 
-/*
-	public List<Asiakas> getAsiakkaat() {
-		return asiakkaat;
-	}
-
-
-	public void setAsiakkaat(List<Asiakas> asiakkaat) {
-		this.asiakkaat = asiakkaat;
-	}
-
-
-	public List<Tyontekija> getTyontekijat() {
-		return tyontekijat;
-	}
-
-
-	public void setTyontekijat(List<Tyontekija> tyontekijat) {
-		this.tyontekijat = tyontekijat;
-	}*/
 
 
 	public String getPostinumero() {
@@ -85,16 +67,6 @@ public class Postinumero {
 		this.postitoimipaikka = postitoimipaikka;
 	}
 
-/*
-	@Override
-	public String toString() {
-		return "Postinumero [postinumero=" + postinumero + ", postitoimipaikka=" + postitoimipaikka + ", asiakkaat="
-				+ asiakkaat + ", tyontekijat=" + tyontekijat + "]";
-	}
-*/
-
-
-
 
 	public void setAsiakkaat(List<Asiakas> asiakkaat) {
 		this.asiakkaat = asiakkaat;
@@ -110,6 +82,14 @@ public class Postinumero {
 	public String toString() {
 		return "Postinumero [postinumero=" + postinumero + ", postitoimipaikka=" + postitoimipaikka + "]";
 	}
+
+/*
+	@Override
+	public String toString() {
+		return "Postinumero [postinumero=" + postinumero + ", postitoimipaikka=" + postitoimipaikka + ", asiakkaat="
+				+ asiakkaat + ", tyontekijat=" + tyontekijat + "]";
+	}
+*/
 	
 	
 }

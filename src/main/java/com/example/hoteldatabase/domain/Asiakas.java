@@ -61,7 +61,7 @@ public class Asiakas {
 
 
 	public Asiakas(String etunimi, String sukunimi, String sposti, String puhelin, String katuosoite,
-			Postinumero postinumero) {//, List<Varaus> varaukset) {
+			Postinumero postinumero) {
 		super();
 		this.etunimi = etunimi;
 		this.sukunimi = sukunimi;
@@ -69,7 +69,19 @@ public class Asiakas {
 		this.puhelin = puhelin;
 		this.katuosoite = katuosoite;
 		this.postinumero = postinumero;
-//		this.varaukset = varaukset;
+	}
+	
+	
+	public Asiakas(String etunimi, String sukunimi, String sposti, String puhelin, String katuosoite,
+			Postinumero postinumero, List<Varaus> varaukset) {
+		super();
+		this.etunimi = etunimi;
+		this.sukunimi = sukunimi;
+		this.sposti = sposti;
+		this.puhelin = puhelin;
+		this.katuosoite = katuosoite;
+		this.postinumero = postinumero;
+		this.varaukset = varaukset;
 	}
 
 
@@ -153,21 +165,12 @@ public class Asiakas {
 		this.varaukset = varaukset;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Asiakas [asiakasId=" + asiakasId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", sposti="
 				+ sposti + ", puhelin=" + puhelin + ", katuosoite=" + katuosoite + ", postinumero=" + this.getPostinumero()
 				+ ", varaukset=" + this.getVaraukset() + "]";
 	}
-
-
-/*
-	@Override
-	public String toString() {
-		return "Asiakas [asiakasId=" + asiakasId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", sposti=" + sposti
-				+ ", puhelin=" + puhelin + ", katuosoite=" + katuosoite + "]";
-	}*/
-	
-	
 	
 }

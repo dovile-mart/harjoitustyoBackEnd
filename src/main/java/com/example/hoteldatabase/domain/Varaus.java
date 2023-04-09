@@ -1,7 +1,6 @@
 package com.example.hoteldatabase.domain;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -49,19 +48,7 @@ public class Varaus {
 	public Varaus() {
 		super();
 	}
-//riisuttu versio	
-	public Varaus(Asiakas asiakas, Tyontekija tyontekija, String lisatietoja, int hinta, boolean maksettu) {
-		super();
-		this.asiakas = asiakas;
-		this.tyontekija = tyontekija;
-	//	this.varausPvm = varausPvm;LocalDateTime varausPvm,
-		this.lisatietoja = lisatietoja;
-		this.hinta = hinta;
-	//	this.maksettu = maksettu;
-	}
-	
-	
-	
+
 	public Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDate varausPvm, String lisatietoja, int hinta,
 			boolean maksettu) {
 		super();
@@ -71,15 +58,6 @@ public class Varaus {
 		this.lisatietoja = lisatietoja;
 		this.hinta = hinta;
 		this.maksettu = maksettu;
-	}
-	
-	
-	public Varaus(String lisatietoja, int hinta, boolean maksettu, List<Huonevaraus> huonevaraukset) {
-		super();
-		this.lisatietoja = lisatietoja;
-		this.hinta = hinta;
-		this.maksettu = maksettu;
-		this.huonevaraukset = huonevaraukset;
 	}
 	
 	public Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDate varausPvm, String lisatietoja,
@@ -165,25 +143,8 @@ public class Varaus {
 	public void setHuonevaraukset(List<Huonevaraus> huonevaraukset) {
 		this.huonevaraukset = huonevaraukset;
 	}
-/*	@Override
-	public String toString() {
-		return "Varaus [varausId=" + varausId + ", asiakas=" + asiakas + ", tyontekija=" + tyontekija + ", lisatietoja="
-				+ lisatietoja + ", hinta=" + hinta +"]";
-	}
-	
-	
-	@Override
-	public String toString() {
-		return "Varaus [varausId=" + varausId + ", asiakas=" + asiakas + ", tyontekija=" + tyontekija + ", varausPvm="
-				+ varausPvm + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu=" + maksettu
-				+ ", huonevaraukset=" + huonevaraukset + "]";
-	}
 
-	@Override
-	public String toString() {
-		return "Varaus [varausId=" + varausId + ", varausPvm=" + varausPvm + ", lisatietoja=" + lisatietoja
-				+ ", hinta=" + hinta + ", maksettu=" + maksettu + "]";
-	}*/
+	
 	@Override
 	public String toString() {
 		return "Varaus [varausId=" + varausId + ", asiakas=" + asiakas + ", tyontekija=" + tyontekija + ", varausPvm="

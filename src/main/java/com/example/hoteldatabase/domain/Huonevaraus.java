@@ -39,6 +39,8 @@ public class Huonevaraus {
 	private int hinta;
 	private boolean maksettu;
 	
+	
+	
 	public Huonevaraus() {
 		super();
 	}
@@ -73,7 +75,6 @@ public class Huonevaraus {
 	public Huonevaraus(LocalDate tuloPvm, LocalDate lahtoPvm, int hloMaara,
 			String lisatietoja, int hinta, boolean maksettu) {
 		super();
-
 		this.tuloPvm = tuloPvm;
 		this.lahtoPvm = lahtoPvm;
 		this.hloMaara = hloMaara;
@@ -81,6 +82,7 @@ public class Huonevaraus {
 		this.hinta = hinta;
 		this.maksettu = maksettu;
 	}
+	
 	public Huonevaraus(Huone huone, LocalDate tuloPvm, LocalDate lahtoPvm,
 			int hloMaara, String lisatietoja, int hinta, boolean maksettu) {
 		super();
@@ -92,6 +94,7 @@ public class Huonevaraus {
 		this.hinta = hinta;
 		this.maksettu = maksettu;
 	}
+	
 	public Huonevaraus(Varaus varaus, Huone huone, LocalDate tuloPvm, LocalDate lahtoPvm,
 			int hloMaara, String lisatietoja, int hinta, boolean maksettu) {
 		super();
@@ -104,6 +107,16 @@ public class Huonevaraus {
 		this.hinta = hinta;
 		this.maksettu = maksettu;
 	}
+	
+	
+	
+	public Long getHuonevarausId() {
+		return huonevarausId;
+	}
+
+	public void setHuonevarausId(Long huonevarausId) {
+		this.huonevarausId = huonevarausId;
+	}	
 	
 	public Varaus getVaraus() {
 		return varaus;
@@ -121,14 +134,6 @@ public class Huonevaraus {
 		this.huone = huone;
 	}
 
-
-	public Long getHuonevarausId() {
-		return huonevarausId;
-	}
-
-	public void setHuonevarausId(Long huonevarausId) {
-		this.huonevarausId = huonevarausId;
-	}
 
 	public LocalDate getTuloPvm() {
 		return tuloPvm;
@@ -179,16 +184,6 @@ public class Huonevaraus {
 	}
 
 
-
-/*		@Override
-	public String toString() {
-		return "Huonevaraus [huonevarausId=" + huonevarausId + ", varaus=" + varaus + ", huone=" + huone + ", tuloPvm="
-				+ tuloPvm + ", lahtoPvm=" + lahtoPvm + ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja
-				+ ", hinta=" + hinta + ", maksettu=" + maksettu + "]";
-	}
-
-	
-*/
 
 @Override
 	public String toString() {
