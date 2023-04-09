@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import jakarta.persistence.OneToMany;
 public class Asiakas {
 	
 	@Id
+	@Column(name="asiakas_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long asiakasId;
 	

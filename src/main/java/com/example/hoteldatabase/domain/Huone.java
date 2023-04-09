@@ -5,6 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -12,9 +13,15 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Huone {
 	@Id
+	@Column(name="huone_nro")
 	private String huoneNro;
+
+	@Column(name="huone_kuvaus")
 	private String huoneKuvaus;
+	
 	private int hinta;
+	
+	@Column(name="onko_vapaa")
 	private boolean onkoVapaa = true;	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "huone")

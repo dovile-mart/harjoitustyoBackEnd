@@ -5,6 +5,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,7 +18,9 @@ import jakarta.persistence.OneToMany;
 public class Tyontekija {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="tyontekija_id")
 	private Long tyontekijaId;
+	
 	private String etunimi;
 	private String sukunimi;
 	private String sposti;

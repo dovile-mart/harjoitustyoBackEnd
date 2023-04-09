@@ -3,6 +3,7 @@ package com.example.hoteldatabase.domain;
 import java.time.LocalDate;
 //import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,19 +15,26 @@ import jakarta.persistence.ManyToOne;
 public class Huonevaraus {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="huonevaraus_id")
 	private Long huonevarausId;
 	
 	@ManyToOne
-	@JoinColumn(name="varausId")
+	@JoinColumn(name="varaus_id")
 	private Varaus varaus;
 	
 	@ManyToOne
-	@JoinColumn(name="huoneNro")
+	@JoinColumn(name="huone_nro")
 	private Huone huone;
 
+	@Column(name="tulo_pvm")
 	private LocalDate tuloPvm;
+	
+	@Column(name="lahto_pvm")
 	private LocalDate lahtoPvm;
+	
+	@Column(name="hlo_maara")
 	private int hloMaara;
+	
 	private String lisatietoja;
 	private int hinta;
 	private boolean maksettu;

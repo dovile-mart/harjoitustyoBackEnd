@@ -26,12 +26,11 @@ public class Varaus {
 	private Long varausId;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="asiakasid")
+	@JoinColumn(name="asiakas_id")
 	private Asiakas asiakas;
 	
 	@ManyToOne
-	@JoinColumn(name="tyontekijaId")
-//  @Column(name="tyontekija_id")
+	@JoinColumn(name="tyontekija_id")
 	private Tyontekija tyontekija;
 	
 	@Column(name="varaus_pvm")
