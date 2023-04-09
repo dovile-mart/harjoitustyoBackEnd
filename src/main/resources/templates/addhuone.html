@@ -7,25 +7,22 @@
 </head>
 <body>
 <div class="container">
-	<h1>Uusi asiakas</h1>
+	<h1>Uusi huone</h1>
 	<div>
-	<form th:object="${uusiHuone}" th:action="@{/saveHuone}" action="#" method="post">
+		<form th:object="${uusiHuone}" th:action="@{saveHuone}" action="#" method="post">
 		  	<div>
-		  		<label>Huonenumero</label>
+		 		<label>Huonenumero</label>
 				<input type="text" th:field="*{huoneNro}" />
 			</div>
 			<div>
 			  	<label>Kuvaus</label>
-				<input type="text" th:field="'*{kuvaus}'" />
+				<input type="text" th:field="*{huoneKuvaus}" />
 			</div>
-			<div>
+		 	<div>
 			  	<label>Hinta</label>
 			  	<input type="number" th:field="*{hinta}" />
 			</div>
-			<div>
-			  	<label>Vapaa</label>
-				<input type="text" th:field="'*{onkoVapaa}'" />
-			</div><br>
+		<br>
 			
 		  	
 						
