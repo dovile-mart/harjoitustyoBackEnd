@@ -30,8 +30,8 @@
 						<td th:text="${huone.huoneKuvaus}"></td>
 						<td th:text="${huone.hinta} + ' €'"></td>
 						<td th:text="${huone.onkoVapaa}"></td>
-						<td><a th:href="@{/editHuone/{id}(id=${huone.huoneNro})}" class="btn btn-outline-warning">Muokkaa</a></td>
-					<td><a th:href="@{/deleteHuone/{id}(id=${huone.huoneNro})}" class="btn btn-outline-danger">Poista</a></td>
+						<td><a th:href="@{/editHuone/{id}(id=${huone.id})}" class="btn btn-outline-warning">Muokkaa</a></td>
+					<td><a th:href="@{/deleteHuone/{id}(id=${huone.id})}" class="btn btn-outline-danger">Poista</a></td>
 					</tr>
 				</table>
 			</div>

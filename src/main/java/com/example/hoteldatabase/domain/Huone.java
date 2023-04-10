@@ -7,12 +7,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
 public class Huone {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	
 	@Column(name="huone_nro")
 	private String huoneNro;
 
@@ -59,6 +64,8 @@ public class Huone {
 
 
 
+	
+	/*	
 	public String getHuoneNro() {
 		return huoneNro;
 	}
@@ -97,7 +104,7 @@ public class Huone {
 	public void setHuonevaraukset(List<Huonevaraus> huonevaraukset) {
 		this.huonevaraukset = huonevaraukset;
 	}
-/*
+
 	@Override
 	public String toString() {
 		return "Huone [huoneNro=" + huoneNro + ", huoneKuvaus=" + huoneKuvaus + ", hinta=" + hinta + ", onkoVapaa="
@@ -107,11 +114,48 @@ public class Huone {
 */	
 	
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getHuoneNro() {
+		return huoneNro;
+	}
+	public void setHuoneNro(String huoneNro) {
+		this.huoneNro = huoneNro;
+	}
+	public String getHuoneKuvaus() {
+		return huoneKuvaus;
+	}
+	public void setHuoneKuvaus(String huoneKuvaus) {
+		this.huoneKuvaus = huoneKuvaus;
+	}
+	public int getHinta() {
+		return hinta;
+	}
+	public void setHinta(int hinta) {
+		this.hinta = hinta;
+	}
+	public boolean isOnkoVapaa() {
+		return onkoVapaa;
+	}
+	public void setOnkoVapaa(boolean onkoVapaa) {
+		this.onkoVapaa = onkoVapaa;
+	}
+	public List<Huonevaraus> getHuonevaraukset() {
+		return huonevaraukset;
+	}
+	public void setHuonevaraukset(List<Huonevaraus> huonevaraukset) {
+		this.huonevaraukset = huonevaraukset;
+	}
 	@Override
 	public String toString() {
-		return "Huone [huoneNro=" + huoneNro + ", huoneKuvaus=" + huoneKuvaus + ", hinta=" + hinta + ", onkoVapaa="
-				+ onkoVapaa + "]";
+		return "Huone [id=" + id + ", huoneNro=" + huoneNro + ", huoneKuvaus=" + huoneKuvaus + ", hinta=" + hinta
+				+ ", onkoVapaa=" + this.isOnkoVapaa() +  "]";
 	}
+
 	
 	
 }

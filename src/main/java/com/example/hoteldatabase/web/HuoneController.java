@@ -38,15 +38,16 @@ public class HuoneController {
 		
 		//huoneen tietojen muokkaus
 		@GetMapping("/editHuone/{id}")
-		public String editHuone(@PathVariable("id") String huoneNro, Model model ) {
-			log.info("Muokkaa huoneen " + huoneNro + " tiedot");
-			model.addAttribute("editHuone", huoneRepo.findByHuoneNro(huoneNro));
+		public String editHuone(@PathVariable("id") Long id, Model model ) {
+			log.info("Muokkaa huoneen (id: " + id + ") tiedot");
+			model.addAttribute("editHuone", huoneRepo.findById(id));
+			model.addAttribute("id", id);
 			return "edithuone";
 		}
 	
 		
 		//huoneen tallennus+validointi
-		@PostMapping("saveHuone")
+		@PostMapping("/saveHuone")
 		public String saveHuone( Huone huone, BindingResult bindingResult) { //@Valid
 			log.info("HuoneController: validoinnin tarkistus, huone: " + huone);
 			if(bindingResult.hasErrors()) {
@@ -59,9 +60,9 @@ public class HuoneController {
 		
 		//huoneen poisto
 		@GetMapping("deleteHuone/{id}")
-		public String deleteHuone(@PathVariable("id") String huoneNro, Model model) {
-			log.info("Poista huone nro: " + huoneNro);
-			huoneRepo.deleteById(huoneNro);
+		public String deleteHuone(@PathVariable("id") Long id) {//String huoneNro) {
+			log.info("Poista huone (id: " + id + ")");
+			huoneRepo.deleteById(id);
 			return "redirect:/huoneet";
 		}
 }
