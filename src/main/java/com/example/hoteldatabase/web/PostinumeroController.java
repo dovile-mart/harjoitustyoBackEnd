@@ -58,7 +58,7 @@ public class PostinumeroController {
 		//postinumeron poisto
 		@GetMapping("deletePostinumero/{id}")
 		public String deletePostinumero(@PathVariable("id") String postinumero, Model model) {
-			log.info("Poista postinumero nro: " + postinumero);
+			log.info("Poista postinumero: " + postinumero);
 			postinumeroRepo.deleteById(postinumero);
 			return "redirect:/postinumerot";
 		}
