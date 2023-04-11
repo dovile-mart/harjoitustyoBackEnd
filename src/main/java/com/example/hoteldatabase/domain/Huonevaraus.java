@@ -187,7 +187,7 @@ public class Huonevaraus {
 
 @Override
 	public String toString() {
-		return "Huonevaraus [huonevarausId=" + huonevarausId + ", varaus=" + varaus + " huone=" + huone + ", tuloPvm=" + tuloPvm + ", lahtoPvm=" + lahtoPvm
+		return "Huonevaraus [huonevarausId=" + huonevarausId + ", varaus=" + this.getVaraus() + " huone=" + huone + ", tuloPvm=" + tuloPvm + ", lahtoPvm=" + lahtoPvm
 				 + ", hloMaara=" + hloMaara + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu=" + maksettu + "]";
 	}
 	

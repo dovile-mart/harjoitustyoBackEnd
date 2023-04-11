@@ -28,7 +28,7 @@ public class Varaus {
 	@JoinColumn(name="asiakas_id")
 	private Asiakas asiakas;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="tyontekija_id")
 	private Tyontekija tyontekija;
 	
