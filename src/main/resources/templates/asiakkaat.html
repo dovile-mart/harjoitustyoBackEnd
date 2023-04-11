@@ -27,6 +27,7 @@
 					<th>Osoite</th>
 					<th>Postitoimipaikka</th>
 					<th>Postinumero</th>
+					<th>Varaus</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -38,6 +39,8 @@
 					<td th:text="${asiakas.katuosoite}"></td>
 					<td th:text="${asiakas.postinumero.postitoimipaikka}"></td>
 					<td th:text="${asiakas.postinumero.postinumero}"></td>
+				<!--	<td th:text="${asiakas.varaukset}"></td>-->
+					<td><a th:href="@{/asiakasvaraukset/{id}(id=${asiakas.asiakasId})}" class="btn btn-outline-info">Varaukset</a></td>
 					<td><a th:href="@{/editAsiakas/{id}(id=${asiakas.asiakasId})}" class="btn btn-outline-warning">Muokkaa</a></td>
 					<td><a th:href="@{/deleteAsiakas/{id}(id=${asiakas.asiakasId})}" class="btn btn-outline-danger">Poista</a></td>
 					<!--  -->
