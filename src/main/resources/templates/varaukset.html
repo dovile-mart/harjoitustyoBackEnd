@@ -24,7 +24,7 @@
 						<th>Lisätietoja</th>
 						<th>Kokonaishinta</th>
 						<th>Maksettu</th>
-						<th>Varatut huoneet</th>
+				<!--		<th>Varaus id</th> -->
 						<th></th>
 						<th></th>
 					</tr>
@@ -36,7 +36,7 @@
 						<td th:text="${varaus.lisatietoja}"></td>
 						<td th:text="${varaus.hinta} + ' €'"></td>
 						<td th:text="${varaus.maksettu}"></td>
-						<td th:text="'${varaus} varauksen kaikki tiedot'"></td>
+				<!--		<td th:text="${varaus}"></td> -->
 						<td><a th:href="@{/editVaraus/{id}(id=${varaus.varausId})}" class="btn btn-outline-warning">Muokkaa</a></td>
 					<td><a th:href="@{/deleteVaraus/{id}(id=${varaus.varausId})}" class="btn btn-outline-danger">Poista</a></td>
 						<!--<td th:text="${}"></td> -->
