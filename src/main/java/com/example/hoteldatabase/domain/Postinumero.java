@@ -20,7 +20,7 @@ public class Postinumero {
 	@Size(min=5, max=5, message="Postinumeron pituus pitää olla 5 merkkiä")
 	@Column(name="postinumero", length=5)
 	private String postinumero;
-	
+		
 	@NotEmpty(message="Postitoimipaikka ei voi olla tyhjä")
 	@Size(min=1, max=50)
 	private String postitoimipaikka;
