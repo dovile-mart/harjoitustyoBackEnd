@@ -2,9 +2,13 @@ package com.example.hoteldatabase.domain;
 
 import java.util.List;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -13,7 +17,12 @@ import jakarta.persistence.OneToMany;
 public class Postinumero {
 	
 	@Id
+	@Size(min=5, max=5, message="Postinumeron pituus pitää olla 5 merkkiä")
+	@Column(name="postinumero", length=5)
 	private String postinumero;
+	
+	@NotEmpty(message="Postitoimipaikka ei voi olla tyhjä")
+	@Size(min=1, max=50)
 	private String postitoimipaikka;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "postinumero")
