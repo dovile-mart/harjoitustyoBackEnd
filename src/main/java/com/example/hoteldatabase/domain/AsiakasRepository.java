@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface AsiakasRepository extends CrudRepository<Asiakas, Long>{
 	List<Asiakas> findByEtunimi(String etunimi);
-	List<Asiakas> findByAsiakasId(Long asiakasId);
+//	List<Asiakas> findByAsiakasId(Long asiakasId);
 //	List<Asiakas> findByVarausId(Long varausId);
 
 }
