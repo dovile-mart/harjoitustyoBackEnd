@@ -1,8 +1,6 @@
 package com.example.hoteldatabase;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,10 +53,10 @@ public class HoteldatabaseApplication {
 
 
 	@Bean
-	public CommandLineRunner demoAsiakkaat(AsiakasRepository asiakasRepo, TyontekijaRepository tyontekijaRepo, PostinumeroRepository postinumeroRepo, VarausRepository varausRepo, HuoneRepository huoneRepo, HuonevarausRepository huonevarausRepo) {
+	public CommandLineRunner demoData(AsiakasRepository asiakasRepo, TyontekijaRepository tyontekijaRepo, PostinumeroRepository postinumeroRepo, VarausRepository varausRepo, HuoneRepository huoneRepo, HuonevarausRepository huonevarausRepo) {
 		return (args) -> {
 
-			log.info("Luodaan demopostinumerot");
+			log.info("Luodaan postinumerot");
 			// Postinumero(String postinumero, String postitoimipaikka)
 			postinumeroRepo.save(new Postinumero("06100", "Porvoo"));
 			postinumeroRepo.save(new Postinumero("06500", "Porvoo"));
@@ -68,7 +66,7 @@ public class HoteldatabaseApplication {
 			}
 			
 						
-			log.info("Luodaan demohuoneita");
+			log.info("Luodaan huoneita");
 			//String huoneNro, String huoneKuvaus, int hinta, boolean onkoVapaa
 			huoneRepo.save(new Huone("101", "Huoneen 101 kuvaus", 90, true));
 			huoneRepo.save(new Huone("102", "Huoneen 102 kuvaus", 110, false));
@@ -79,9 +77,8 @@ public class HoteldatabaseApplication {
 			}
 			
 			
-			log.info("Luodaan demoasiakkaita");
-			// Asiakas(String etunimi, String sukunimi, String sposti, String puhelin,
-			// String katuosoite, Postinumero postinumero, List<Varaus> varaukset)
+			log.info("Luodaan asiakkaita");
+			// Asiakas(String etunimi, String sukunimi, String sposti, String puhelin, String katuosoite, Postinumero postinumero, List<Varaus> varaukset)
 			asiakasRepo.save(new Asiakas("Matti", "Meikäläinen", "matti@mail.com", "019-123456", "Pilvikuja 2", postinumeroRepo.findByPostinumero("06500").get(0)));//, varausRepo.findByVarausId(1).get(0)));// ,
 			asiakasRepo.save(new Asiakas("Joona", "Seppälä", "joona@mail.com", "050-123456", "Pilvitie 13", postinumeroRepo.findByPostinumero("06100").get(0)));
 			log.info("Tulostetaan asiakkaat:");
@@ -90,7 +87,7 @@ public class HoteldatabaseApplication {
 			}
 					
 			
-			log.info("Luodaan demotyöntekijöitä");
+			log.info("Luodaan työntekijöitä");
 			// Tyontekija(String etunimi, String sukunimi, String sposti, String puhelin, String katuosoite, Postinumero postinumero, List<Varaus> varaukset)
 			tyontekijaRepo.save(new Tyontekija("Seppo", "Seppolainen", "seppo@mail.com", "019-1111111", "Pilvikatu 42", postinumeroRepo.findByPostinumero("06100").get(0)));// ,, varausRepo.findById(0)
 			tyontekijaRepo.save(new Tyontekija("Katri", "Kekkilä", "katri@mail.com", "040-1222233", "Hiihtäjäntie 3", postinumeroRepo.findByPostinumero("06500").get(0)));
@@ -101,34 +98,28 @@ public class HoteldatabaseApplication {
 								
 			
 		
-			log.info("Luodaan demovarauksia");//LocalDate.of(2023, 7, 23)
-			//Varaus(String lisatietoja, int hinta, boolean maksettu, List<Huonevaraus> huonevaraukset
-//			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Seppo").get(0),"Lisätiedot",120));
-//			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Katri").get(0),"Lisätiedot testi2",130));
-
+			log.info("Luodaan varauksia");
 			//Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDate varausPvm, String lisatietoja, int hinta, boolean maksettu)
 			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Seppo").get(0), LocalDate.of(2023, 1, 23), "Lisätiedot varauksesta", 150, false));
 			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Joona").get(0), tyontekijaRepo.findByEtunimi("Katri").get(0), LocalDate.of(2023, 1, 24), "Lisätiedot varauksesta", 150, false));
-			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Seppo").get(0), LocalDate.of(2023, 1, 23), "Lisätiedot varauksesta", 120, false));
+			varausRepo.save(new Varaus(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Katri").get(0), LocalDate.of(2023, 1, 26), "Lisätiedot varauksesta", 120, false));
 			
-			//			varausRepo.save(new Varaus(asiakasRepo.findById(1), tyontekijaRepo.findById(1), "Lisätietoja toisesta varauksesta", 130));
 //			varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(null), tyontekijaRepo.findByTyontekijaId(null), "Lisätiedot 3:sta varauksesta", huoneRepo.findByHuoneNro("101")));
+
 			// Varaus(Asiakas asiakas, Tyontekija tyontekija, LocalDateTime varausPvm, String lisatietoja,int hinta, boolean maksettu, List<Huonevaraus> huonevaraukset)
+
 	//		varausRepo.save(new Varaus(asiakasRepo.findByVarausId(varausId), "Lisätietojen kenttä", 159, false));
-//KESKEN!!! 			varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(1).get(0), ));
-			//(10-12-2022, "Lisätietojen kenttä", 159, false)
 	//		varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(1).get(0), tyontekijaRepo.findById(1).get(0), null, "Lisätietoja varauksesta", 120, false, huonevarausRepo.findById().size(0)));
 //			varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(1), tyontekijaRepo.findByTyontekijaEtunimi("Seppo").get(0), "Lisätiedot varauksesta", 120, 1 ));
 //			varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(null), tyontekijaRepo.findByEtunimi("Seppo").get(0), "Lisätiedot varauksesta", 120));
 //			varausRepo.save(new Varaus(asiakasRepo.findByAsiakasId(1).get(0), tyontekijaRepo.findById(null),"Lisätietoja varauksesta", 500);
 
-			//varausRepo.save(new Varaus());
 			log.info("Tulostetaan varaukset");
 			for (Varaus varaus : varausRepo.findAll()) {
 				log.info(varaus.toString());
 			}
 			
-			log.info("Luodaan demohuonevarauksia");
+			log.info("Luodaan huonevarauksia");
 			//Huonevaraus(LocalDateTime tuloPvm, LocalDateTime lahtoPvm, int hloMaara,String lisatietoja, int hinta, Boolean maksettu)
 			//Huonevaraus(Huone huone, int hloMaara, String lisatietoja, int hinta, boolean maksettu)
 			
@@ -141,22 +132,34 @@ public class HoteldatabaseApplication {
 //			log.info("varaus: " + v);
 					//varausRepo.findByAsiakasAndTyontekija(asiakasRepo.findByEtunimi("Matti").get(0), tyontekijaRepo.findByEtunimi("Seppo").get(0)).get(0), 
 					
-		huonevarausRepo.save(new Huonevaraus(
+			huonevarausRepo.save(new Huonevaraus(
 					varausRepo.findByAsiakasAndTyontekija(
 							asiakasRepo.findByEtunimi("Matti").get(0), 
 							tyontekijaRepo.findByEtunimi("Seppo").get(0)).get(0), 
 					huoneRepo.findByHuoneNro("101").get(0), 
 					LocalDate.of(2023, 1, 23), LocalDate.of(2023, 1, 24), 
 					2, 
-					"Lisätiedot huoneen 101 huonevarauksesta", 120, false)); 
+					"Lisätiedot huoneen 101 huonevarauksesta",
+					120, false)); 
 					
 		
-				huonevarausRepo.save(new Huonevaraus(
-						huoneRepo.findByHuoneNro("103").get(0), 
-						LocalDate.of(2023, 1, 23), LocalDate.of(2023, 1, 25), 
-						1, 
-						"Lisätiedot huoneen 103 huonevarauksesta", 90, true)); 
-				//huonevarausRepo.save(new Huonevaraus(LocalDate.of(2023,3,23),LocalDate.of(2023,3,25), 2, "Lisätietoja huonevarauksesta", 180, false));//, false
+			huonevarausRepo.save(new Huonevaraus(
+					huoneRepo.findByHuoneNro("103").get(0), 
+					LocalDate.of(2023, 1, 23), LocalDate.of(2023, 1, 25), 
+					1, 
+					"Lisätiedot huoneen 103 huonevarauksesta", 90, true)); 
+			//huonevarausRepo.save(new Huonevaraus(LocalDate.of(2023,3,23),LocalDate.of(2023,3,25), 2, "Lisätietoja huonevarauksesta", 180, false));//, false
+				
+	/*			huonevarausRepo.save(new Huonevaraus(
+						varausRepo.findByAsiakasAndTyontekija(
+								asiakasRepo.findByEtunimi("Matti").get(0), 
+								tyontekijaRepo.findByEtunimi("Seppo").get(0)).get(0), 
+						huoneRepo.findByHuoneNro("101").get(0), 
+						LocalDate.of(2023, 1, 23), LocalDate.of(2023, 1, 24), 
+						2, 
+						"Lisätiedot huoneen 101 huonevarauksesta",
+						huoneRepo.findByHuoneNro("101").getHinta()), false)); 
+	*/					
 				
 				log.info("Tulostetaan huonevaraukset");
 				for (Huonevaraus huonevaraus : huonevarausRepo.findAll()) {
