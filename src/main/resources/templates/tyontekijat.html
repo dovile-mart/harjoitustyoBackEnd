@@ -13,34 +13,33 @@
 			<a class="btn btn-warning" href="/addTyontekija" role="button">Lisää uusi työntekijä</a>
 			 <br> <br>
 		</div>
-<div class="row">
-<h1>Työntekijät</h1>
-	<table class="table table-bordered table-striped">
-		<tr>
-			<th>Työntekijä id</th>
-			<th>Nimi</th>
-			<th>Sposti</th>
-			<th>Puhelin</th>
-			<th>Osoite</th>
-			<th>Postinumero</th>
-			<th>Postitoimipaikka</th>
-			<th></th>
-			<th></th>
-		</tr>
-		<tr th:each = "tyontekija : ${tyontekijat}">
-			<td th:text="${tyontekija.tyontekijaId}"></td>
-			<td th:text="${tyontekija.etunimi} + ' ' + ${tyontekija.sukunimi}"></td>
-			<td th:text="${tyontekija.sposti}"></td>
-			<td th:text="${tyontekija.puhelin}"></td>
-			<td th:text="${tyontekija.katuosoite}"></td>
-			<td th:text="${tyontekija.postinumero.postinumero}"></td>
-			<td th:text="${tyontekija.postinumero.postitoimipaikka}"></td>
-			<td><a th:href="@{/editTyontekija/{id}(id=${tyontekija.tyontekijaId})}" class="btn btn-outline-warning">Muokkaa</a></td>
-			<td><a th:href="@{/deleteTyontekija/{id}(id=${tyontekija.tyontekijaId})}" class="btn btn-outline-danger">Poista</a></td>
-		</tr>
-	</table>
+		<div class="row">
+			<h1>Työntekijät</h1>
+			<table class="table table-bordered table-striped">
+				<tr>
+					<th>Työntekijä id</th>
+					<th>Nimi</th>
+					<th>Sposti</th>
+					<th>Puhelin</th>
+					<th>Osoite</th>
+					<th>Postinumero</th>
+					<th>Postitoimipaikka</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr th:each = "tyontekija : ${tyontekijat}">
+					<td th:text="${tyontekija.tyontekijaId}"></td>
+					<td th:text="${tyontekija.etunimi} + ' ' + ${tyontekija.sukunimi}"></td>
+					<td th:text="${tyontekija.sposti}"></td>
+					<td th:text="${tyontekija.puhelin}"></td>
+					<td th:text="${tyontekija.katuosoite}"></td>
+					<td th:text="${tyontekija.postinumero.postinumero}"></td>
+					<td th:text="${tyontekija.postinumero.postitoimipaikka}"></td>
+					<td><a th:href="@{/editTyontekija/{id}(id=${tyontekija.tyontekijaId})}" class="btn btn-outline-warning">Muokkaa</a></td>
+					<td><a th:href="@{/deleteTyontekija/{id}(id=${tyontekija.tyontekijaId})}" class="btn btn-outline-danger">Poista</a></td>
+				</tr>
+			</table>
 		</div>
-
 	</div>
 </body>
 </html>

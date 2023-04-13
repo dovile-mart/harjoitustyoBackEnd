@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <title>Asiakkaat</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,13 +9,13 @@
 <body>
 	<div class="container">
 		<div>
-			<br> <br>
+		<br> <br>
 			<a class="btn btn-info" href="/index" role="button">Etusivulle</a>
-			<a class="btn btn-warning" href="/asiakas/addAsiakas" role="button">Lisää uusi asiakas</a>
-			 <br> <br>
+			<a class="btn btn-warning" href="/addAsiakas" role="button">Lisää uusi asiakas</a>
+		<br> <br>
 		</div>
-		<div class="row">
-			<h1>Asiakkaat</h1>
+		<div>
+			<h1>Asiakkaat</h1>			
 		</div>
 		<div>
 			<table class="table table-bordered table-striped"> <!--table-responsive   -->
@@ -43,7 +43,7 @@
 					<td th:text="${varaukset}"></td>
 					<td><a th:href="@{/asiakasvaraukset/{id}(id=${asiakas.asiakasId})}" class="btn btn-outline-info">Varaukset</a></td>-->
 					<td><a th:href="@{/editAsiakas/{id}(id=${asiakas.asiakasId})}" class="btn btn-outline-warning">Muokkaa</a></td>
-					<td><a th:href="@{/deleteAsiakas/{id}(id=${asiakas.asiakasId})}" class="btn btn-outline-danger">Poista</a></td>
+					<td><a th:href="@{/deleteAsiakas/{id}(id=${asiakas.asiakasId})}" sec:authorize="hasAuthority('ADMIN')" class="btn btn-outline-danger">Poista</a></td>
 					<!--  -->
 				</tr>
 			</table>
