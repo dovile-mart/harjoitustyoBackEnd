@@ -13,6 +13,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Tyontekija {
@@ -21,10 +24,25 @@ public class Tyontekija {
 	@Column(name="tyontekija_id")
 	private Long tyontekijaId;
 	
+	@NotEmpty(message = "Anna etunimi.")
+	@Size(min=2, max=100, message = "Etunimen pituus 2-100 merkkiä.")
 	private String etunimi;
+
+	@NotEmpty(message = "Anna sukunimi.")
+	@Size(min=2, max=100, message = "Sukunimen pituus 2-100 merkkiä.")
 	private String sukunimi;
+	
+	@NotEmpty(message = "Anna sähköpostiosoite.")
+	@Email(message = "Sähköpostiosoitteen muoto on väärä.")
+	@Size(max=150, message = "Maksimi pituus 150 merkkiä.")
 	private String sposti;
+	
+	@NotEmpty(message = "Anna puhelinnumero.")
+	@Size(max=20, message = "Maksimi pituus 20 merkkiä.")
 	private String puhelin;
+	
+	@NotEmpty(message = "Anna katuosoite.")
+	@Size(max=20, message = "Maksimi pituus 200 merkkiä.")
 	private String katuosoite;
 
 	@ManyToOne

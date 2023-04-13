@@ -15,13 +15,15 @@ import com.example.hoteldatabase.domain.PostinumeroRepository;
 import com.example.hoteldatabase.domain.Tyontekija;
 import com.example.hoteldatabase.domain.TyontekijaRepository;
 
+import jakarta.validation.Valid;
+
 @Controller
 public class TyontekijaController {
 
 	private static final Logger log = LoggerFactory.getLogger(TyontekijaController.class);
 	
 	@Autowired
-	TyontekijaRepository tyontekijaRepo;
+	private TyontekijaRepository tyontekijaRepo;
 	@Autowired
 	private PostinumeroRepository postinumeroRepo;
 	
@@ -37,7 +39,7 @@ public class TyontekijaController {
 	@GetMapping("/addTyontekija")
 	public String addTyontekija(Model model) {
 		log.info("Luo uusi tyontekija.");
-		model.addAttribute("uusiTyontekija", new Tyontekija());
+		model.addAttribute("tyontekija", new Tyontekija());
 		model.addAttribute("postinumerot", postinumeroRepo.findAll());
 		return "addtyontekija";
 	}
@@ -54,17 +56,18 @@ public class TyontekijaController {
 	}
 	
 	
-	//työntekijän tietojen tallennus
+	//työntekijän tietojen tallennus ja  validoinnin tarkistus
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("/saveTyontekija")
-	public String saveTyontekija( Tyontekija tyontekija, BindingResult bindingResult) { //@Valid
+	public String saveTyontekija(@Valid Tyontekija tyontekija, BindingResult bindingResult, Model model) {
 		log.info("Controller: check validation of tyontekija: " + tyontekija);
 		if(bindingResult.hasErrors()) {
-			log.info("Validation error happened");
+			log.info("Validointivirhe");
+			model.addAttribute("postinumerot", postinumeroRepo.findAll());
 			return "addtyontekija";
 		}
 		tyontekijaRepo.save(tyontekija);
-		return "redirect:tyontekijat";
+		return "redirect:/tyontekijat";
 	}
 	
 	
