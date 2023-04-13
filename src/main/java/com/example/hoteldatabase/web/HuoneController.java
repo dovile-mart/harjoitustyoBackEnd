@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.hoteldatabase.domain.Huone;
 import com.example.hoteldatabase.domain.HuoneRepository;
 
+import jakarta.validation.Valid;
+
 @Controller
 public class HuoneController {
 
@@ -34,7 +36,7 @@ public class HuoneController {
 		@GetMapping("/addHuone")
 		public String addHuone(Model model) {
 			log.info("Luo uusi huone");
-			model.addAttribute("uusiHuone", new Huone());
+			model.addAttribute("huone", new Huone());
 			return "addhuone";
 		}
 		
@@ -52,14 +54,14 @@ public class HuoneController {
 		//huoneen tallennus+validointi
 		@PreAuthorize("hasAuthority('ADMIN')")
 		@PostMapping("/saveHuone")
-		public String saveHuone( Huone huone, BindingResult bindingResult) { //@Valid
+		public String saveHuone(@Valid Huone huone, BindingResult bindingResult, Model model) {
 			log.info("HuoneController: validoinnin tarkistus, huone: " + huone);
 			if(bindingResult.hasErrors()) {
 				log.info("Validointivirhe");
-				return "addhuone";
+				return "/addhuone";
 			}
 			huoneRepo.save(huone);
-			return "redirect:huoneet";
+			return "redirect:/huoneet";
 		}
 		
 		//huoneen poisto

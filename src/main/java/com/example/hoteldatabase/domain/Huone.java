@@ -11,6 +11,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Huone {
@@ -18,9 +21,12 @@ public class Huone {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@NotEmpty(message = "Anna huonenumero.")
 	@Column(name="huone_nro")
 	private String huoneNro;
 
+	@NotEmpty(message = "Anna kuvaus.")
+	@Size(max=150, message = "Maksimi pituus 150 merkkiä.")
 	@Column(name="huone_kuvaus")
 	private String huoneKuvaus;
 	

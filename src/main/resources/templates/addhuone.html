@@ -9,14 +9,16 @@
 <div class="container">
 	<h1>Uusi huone</h1>
 	<div>
-		<form th:object="${uusiHuone}" th:action="@{saveHuone}" action="#" method="post">
+		<form th:object="${huone}" th:action="@{saveHuone}" action="#" method="post">
 		  	<div>
 		 		<label>Huonenumero</label>
 				<input type="text" th:field="*{huoneNro}" />
+				<div th:if="${#fields.hasErrors('huoneNro')}" th:errors="*{huoneNro}">Error</div>
 			</div>
 			<div>
 			  	<label>Kuvaus</label>
 				<input type="text" th:field="*{huoneKuvaus}" />
+				<div th:if="${#fields.hasErrors('huoneKuvaus')}" th:errors="*{huoneKuvaus}">Error</div>
 			</div>
 		 	<div>
 			  	<label>Hinta</label>
