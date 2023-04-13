@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <title>Hotelli</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -8,16 +8,25 @@
 <body>
 	<div class="container">
 		<div class="list-group-item">
-			<h3>Etusivu</h3>
+			<div class="row" style="padding:1px 0px 1px 1px" th:align="center" >
+				<div class="mx-auto">
+					<h3 >Etusivu</h3>
+				</div>
+				<div class="mx-auto">
+					<form th:action="@{/logout}" method="post" th:align="center">
+						<input type="submit" value="Kirjaudu ulos" class="btn btn-sm btn-danger"/>
+					</form>
+				</div>
+			</div>
+
 			<div class="card">
-				<a href="/asiakas/asiakkaat" class="list-group-item list-group-item-action list-group-item-info" >Asiakkaat</a>
+				<a href="/asiakkaat" class="list-group-item list-group-item-action list-group-item-info" >Asiakkaat</a>
 				<a href="/tyontekijat" class="list-group-item list-group-item-action list-group-item-info">Työntekijät</a>
 				<a href="/huoneet" class="list-group-item list-group-item-action list-group-item-info">Huoneet</a>
 				<a href="/huonevaraukset" class="list-group-item list-group-item-action list-group-item-info">Huonevaraukset</a>
 				<a href="/varaukset" class="list-group-item list-group-item-action list-group-item-info">Varaukset</a>
 				<a href="/postinumerot" class="list-group-item list-group-item-action list-group-item-info">Postinumerot</a>
 			</div>
-		
 		</div>
 	</div>
 </body>

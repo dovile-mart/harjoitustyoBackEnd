@@ -16,6 +16,8 @@ import com.example.hoteldatabase.domain.Huone;
 import com.example.hoteldatabase.domain.HuoneRepository;
 import com.example.hoteldatabase.domain.Huonevaraus;
 import com.example.hoteldatabase.domain.HuonevarausRepository;
+import com.example.hoteldatabase.domain.AppUser;
+import com.example.hoteldatabase.domain.AppUserRepository;
 import com.example.hoteldatabase.domain.Postinumero;
 import com.example.hoteldatabase.domain.PostinumeroRepository;
 import com.example.hoteldatabase.domain.Tyontekija;
@@ -46,6 +48,8 @@ public class HoteldatabaseApplication {
 	@Autowired
 	HuonevarausRepository huonevarausRepo;
 	
+	@Autowired
+	AppUserRepository appuserRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(HoteldatabaseApplication.class, args);
@@ -53,7 +57,9 @@ public class HoteldatabaseApplication {
 
 
 	@Bean
-	public CommandLineRunner demoData(AsiakasRepository asiakasRepo, TyontekijaRepository tyontekijaRepo, PostinumeroRepository postinumeroRepo, VarausRepository varausRepo, HuoneRepository huoneRepo, HuonevarausRepository huonevarausRepo) {
+	public CommandLineRunner demoData(AsiakasRepository asiakasRepo, TyontekijaRepository tyontekijaRepo, 
+			PostinumeroRepository postinumeroRepo, VarausRepository varausRepo, HuoneRepository huoneRepo,
+			HuonevarausRepository huonevarausRepo, AppUserRepository appuserRepo) {
 		return (args) -> {
 
 			log.info("Luodaan postinumerot");
@@ -166,6 +172,13 @@ public class HoteldatabaseApplication {
 					log.info(huonevaraus.toString());
 				}
 			
+				
+				log.info("Luodaan käyttäjät"); //user-user, admin-admin
+				//Kayttaja(String kaytnimi, String salasanaHash, String rooli)
+				AppUser user1= new AppUser("user", "$2a$10$az.JwzryQNSAkKPFnjEtAeQvfjz2/DkRsXMoIEQUuOyQTIk3Gsmbq", "USER");
+				AppUser user2 = new AppUser("admin", "$2a$10$jHZtCgwiHJZhaWfj5dShOOtdovGkgrQqtFrAX9a/yJxy9HktsT7TK", "ADMIN");
+				appuserRepo.save(user1);
+				appuserRepo.save(user2);
 		};	
 
 	}
