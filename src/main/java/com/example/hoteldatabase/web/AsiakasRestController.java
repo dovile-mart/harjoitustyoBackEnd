@@ -34,6 +34,7 @@ public class AsiakasRestController {
 	
 	
 	//hakee kaikki asiakkaat
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("api/asiakkaat")
 	public Iterable<Asiakas> getAsiakas(){
 		log.info("Haetaan kaikki asiakkaat:");
@@ -45,6 +46,7 @@ public class AsiakasRestController {
 	}
 	
 	//hakee yhden asiakkaan tiedot
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("api/asiakkaat/{asiakasId}")
 	@ResponseBody 
 //	Optional<Asiakas> getAsiakas(@PathVariable Long asiakasId) {	//palauttaa null, jos asiakasta ei ole
@@ -58,6 +60,7 @@ public class AsiakasRestController {
 	}
 	
 	//asiakkaan tietojen muokkaus
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping("api/asiakkaat/{asiakasId}")
 	@ResponseStatus(HttpStatus.CREATED)
 	Asiakas editAsiakas(@RequestBody Asiakas editedAsiakas, @PathVariable Long asiakasId) {
@@ -82,6 +85,7 @@ public class AsiakasRestController {
 	}
 	
 	//uuden asiakkaan luonti
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("api/asiakkaat")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Asiakas newAsiakas(@Valid @RequestBody Asiakas newAsiakas) {
@@ -101,8 +105,8 @@ public class AsiakasRestController {
 	}
 	
 	//asiakaan poisto
-	@DeleteMapping("api/asiakkaat/{asiakasId}")
 	@PreAuthorize("hasAuthority('ADMIN')")
+	@DeleteMapping("api/asiakkaat/{asiakasId}")
 	void deleteAsiakas(@Valid @PathVariable Long asiakasId){
 		log.info("Poistetaan asiakas id:llä " + asiakasRepo.findById(asiakasId));//.toString());
 		if (asiakasRepo.findByAsiakasId(asiakasId).size() == 0) {

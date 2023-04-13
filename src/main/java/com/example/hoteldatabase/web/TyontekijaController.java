@@ -3,6 +3,7 @@ package com.example.hoteldatabase.web;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +18,7 @@ import com.example.hoteldatabase.domain.TyontekijaRepository;
 @Controller
 public class TyontekijaController {
 
-	private static final Logger log = LoggerFactory.getLogger(AsiakasController.class);
+	private static final Logger log = LoggerFactory.getLogger(TyontekijaController.class);
 	
 	@Autowired
 	TyontekijaRepository tyontekijaRepo;
@@ -32,6 +33,7 @@ public class TyontekijaController {
 	}
 	
 	//työntekijän luonti
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/addTyontekija")
 	public String addTyontekija(Model model) {
 		log.info("Luo uusi tyontekija.");
@@ -42,6 +44,7 @@ public class TyontekijaController {
 	
 	
 	//työntekijän tietojen muokkaus
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/editTyontekija/{id}")
 	public String editTyontekija(@PathVariable("id") Long tyontekijaId, Model model ) {
 		log.info("Muokkaa tyontekijatiedot." + tyontekijaId);
@@ -52,6 +55,7 @@ public class TyontekijaController {
 	
 	
 	//työntekijän tietojen tallennus
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("/saveTyontekija")
 	public String saveTyontekija( Tyontekija tyontekija, BindingResult bindingResult) { //@Valid
 		log.info("Controller: check validation of tyontekija: " + tyontekija);
@@ -65,6 +69,7 @@ public class TyontekijaController {
 	
 	
 	//työntekijän poisto
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("deleteTyontekija/{id}")
 	public String deleteTyontekija(@PathVariable("id") Long id, Model model) {
 		log.info("Poista tyontekija " + id);

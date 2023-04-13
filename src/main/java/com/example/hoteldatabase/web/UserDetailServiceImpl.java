@@ -1,5 +1,7 @@
 package com.example.hoteldatabase.web;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,11 +13,15 @@ import com.example.hoteldatabase.domain.AppUser;
 import com.example.hoteldatabase.domain.AppUserRepository;
 
 
+
 /**
  * This class is used by spring security to authenticate and authorize user
  **/
 @Service
 public class UserDetailServiceImpl implements UserDetailsService  {
+	
+	private static final Logger log = LoggerFactory.getLogger(UserDetailServiceImpl.class);
+	
 	private final AppUserRepository repository;
 
 	@Autowired

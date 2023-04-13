@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -73,6 +74,7 @@ public class HuonevarausController {
 		}
 		
 		//huonevarauksen poisto
+		@PreAuthorize("hasAuthority('ADMIN')")
 		@GetMapping("deleteHuonevaraus/{id}")
 		public String deleteHuonevaraus(@PathVariable("id") Long huonevarausId, Model model) {
 			log.info("Poista huonevaraus: " + huonevarausId);

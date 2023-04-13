@@ -3,6 +3,7 @@ package com.example.hoteldatabase.web;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +30,7 @@ public class HuoneController {
 		}
 		
 		//huoneen luonti
+		@PreAuthorize("hasAuthority('ADMIN')")
 		@GetMapping("/addHuone")
 		public String addHuone(Model model) {
 			log.info("Luo uusi huone");
@@ -37,6 +39,7 @@ public class HuoneController {
 		}
 		
 		//huoneen tietojen muokkaus
+		@PreAuthorize("hasAuthority('ADMIN')")
 		@GetMapping("/editHuone/{id}")
 		public String editHuone(@PathVariable("id") Long id, Model model ) {
 			log.info("Muokkaa huoneen (id: " + id + ") tiedot");
@@ -47,6 +50,7 @@ public class HuoneController {
 	
 		
 		//huoneen tallennus+validointi
+		@PreAuthorize("hasAuthority('ADMIN')")
 		@PostMapping("/saveHuone")
 		public String saveHuone( Huone huone, BindingResult bindingResult) { //@Valid
 			log.info("HuoneController: validoinnin tarkistus, huone: " + huone);
@@ -59,6 +63,7 @@ public class HuoneController {
 		}
 		
 		//huoneen poisto
+		@PreAuthorize("hasAuthority('ADMIN')")
 		@GetMapping("deleteHuone/{id}")
 		public String deleteHuone(@PathVariable("id") Long id) {//String huoneNro) {
 			log.info("Poista huone (id: " + id + ")");

@@ -14,13 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.hoteldatabase.domain.Asiakas;
 import com.example.hoteldatabase.domain.AsiakasRepository;
-import com.example.hoteldatabase.domain.Postinumero;
 import com.example.hoteldatabase.domain.PostinumeroRepository;
 import com.example.hoteldatabase.domain.VarausRepository;
 
 import jakarta.validation.Valid;
 
-//import jakarta.validation.Valid;
 
 @Controller
 public class AsiakasController {
@@ -49,35 +47,14 @@ public class AsiakasController {
 		model.addAttribute("varaukset", varausRepo.findAll());
 		return "asiakkaat";
 	}
-	/*//https://stackabuse.com/spring-boot-thymeleaf-form-data-validation-with-bean-validator/
-	@GetMapping("/asiakas/addAsiakas")
-	public String showAddAsiakasForm(Model model) {
-		model.addAttribute("asiakas", new Asiakas()); //uusiAsiakas
-		model.addAttribute("postinumerot", postinumeroRepo.findAll());
-		return "asiakas/addasiakas";
-	}
-	
-	@PostMapping("/asiakas/addAsiakas")
-	public String addAsiakas(@Valid Asiakas asiakas, BindingResult result, Model model) {
-		log.info("Luo uusi asiakas.");
-		model.addAttribute("postinumerot", postinumeroRepo.findAll());
-		if (result.hasErrors()) {
-			//model.addAttribute("postinumerot", postinumeroRepo.findAll());
-			return "asiakas/addasiakas";
-		}
-	//	model.addAttribute("postinumerot", postinumeroRepo.findAll());
-		asiakasRepo.save(asiakas);
-		return "redirect:asiakas/asiakkaat";
-//		return "asiakas/addasiakas";//newAsiakas
-	}
-*/	
+
 	//asiakkaan luonti
 	@GetMapping("/addAsiakas")
 	public String addAsiakas(Model model) {
 		log.info("Luo uusi asiakas.");
-		model.addAttribute("asiakas", new Asiakas()); //uusiAsiakas
+		model.addAttribute("asiakas", new Asiakas());
 		model.addAttribute("postinumerot", postinumeroRepo.findAll());
-		return "/addasiakas";//newAsiakas
+		return "/addasiakas";
 	}
 	
 	//asiakkaan muokkaus
@@ -91,21 +68,21 @@ public class AsiakasController {
 	
 	//asiakkaan lomaketietojen tallennus + validoinnin tarkistus
 	@PostMapping("/saveAsiakas")
-	public String saveAsiakas(@Valid @ModelAttribute("asiakas") Asiakas asiakas, BindingResult bindingResult, Model model) { //uusiAsiakas
+	public String saveAsiakas(@Valid @ModelAttribute("asiakas") Asiakas asiakas, BindingResult bindingResult, Model model) {
 		log.info("AsiakasController: validoinnin tarkistus, asiakas: " + asiakas);
 		if(bindingResult.hasErrors()) {
 			log.info("Validointivirhe, postinumerot ja asiakkaat: " + postinumeroRepo.findAll() + asiakasRepo.findAll() );
 	//		model.addAttribute("asiakkaat", asiakasRepo.findAllById(asiakasId).get(0)));
 			model.addAttribute("postinumerot", postinumeroRepo.findAll());
-			return "/addasiakas"; //newAsiakas
+			return "/addasiakas";
 		}
 		asiakasRepo.save(asiakas); //jos kaikki hyvin, tallennetaan asiakas tietokantaan
 		return "redirect:/asiakkaat";
 	}
 	
 	//asiakkaan poisto
-	@GetMapping("deleteAsiakas/{id}")
 	@PreAuthorize("hasAuthority('ADMIN')")
+	@GetMapping("deleteAsiakas/{id}")
 	public String deleteAsiakas(@PathVariable("id") Long id, Model model) {
 		log.info("Poista asiakas: " + id);
 		asiakasRepo.deleteById(id);

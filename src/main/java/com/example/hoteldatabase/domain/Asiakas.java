@@ -26,7 +26,7 @@ public class Asiakas {
 	private Long asiakasId;
 	
 	@NotEmpty(message = "Anna etunimi.")
-	@Size(min=2, max=100, message = "Etunimen pituus 2-100 merkkiä. {Size.Asiakas.Etunimi}")
+	@Size(min=2, max=100, message = "Etunimen pituus 2-100 merkkiä.")
 	private String etunimi;
 
 	@NotEmpty(message = "Anna sukunimi.")
@@ -107,7 +107,7 @@ public class Asiakas {
 	}
 
 
-public String getEtunimi() {
+	public String getEtunimi() {
 		return etunimi;
 	}
 
@@ -117,16 +117,6 @@ public String getEtunimi() {
 	}
 
 
-	/*	public String getEtunimi() {
-		return etunimi;
-	}
-
-
-	public void setEtunimi(String etunimi) {
-		this.etunimi = etunimi;
-	}
-
-*/
 	public String getSukunimi() {
 		return sukunimi;
 	}
