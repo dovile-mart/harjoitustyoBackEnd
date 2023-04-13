@@ -74,6 +74,12 @@ public class Varaus {
 	
 	
 
+	public Varaus(Long varausId, List<Huonevaraus> huonevaraukset) {
+		super();
+		this.varausId = varausId;
+		this.huonevaraukset = huonevaraukset;
+	}
+
 	public Long getVarausId() {
 		return varausId;
 	}
@@ -144,13 +150,24 @@ public class Varaus {
 		this.huonevaraukset = huonevaraukset;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Varaus [varausId=" + varausId + ", asiakas=" + asiakas + ", tyontekija=" + tyontekija + ", varausPvm="
-				+ varausPvm + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu=" + maksettu
-				+ "]"; //ei huonevarauksia tänne
+				+ varausPvm + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu=" + maksettu + "]";
 	}
-	
+
+/*	@Override
+	public String toString() {
+		if (this.huonevaraukset != null) {
+			return "Varaus [varausId=" + varausId + ", asiakas=" + asiakas + ", tyontekija=" + tyontekija + ", varausPvm="
+				+ varausPvm + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu=" + maksettu
+				+ ", huonevaraukset=" + this.getHuonevaraukset() + "]";
+		} else {
+			return "Varaus [varausId=" + varausId + ", asiakas=" + asiakas + ", tyontekija=" + tyontekija + ", varausPvm="
+				+ varausPvm + ", lisatietoja=" + lisatietoja + ", hinta=" + hinta + ", maksettu=" + maksettu
+				+ "]";
+			}
+		}
+	*/
 	
 }

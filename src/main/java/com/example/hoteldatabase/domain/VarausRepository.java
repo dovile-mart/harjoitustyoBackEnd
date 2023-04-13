@@ -13,5 +13,5 @@ List<Varaus> findByVarausId(Long varausId);
 List<Varaus> findByAsiakasAndTyontekija(Asiakas asiakas, Tyontekija tyontekija);
 List<Varaus> findByAsiakas(Asiakas asiakas);
 //List<Varaus> findByHuoneNro(Huone huoneNro);
-
+//List<Varaus> findByHuonevaraus(Huonevaraus huonevaraus);
 }
