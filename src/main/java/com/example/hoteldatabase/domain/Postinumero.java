@@ -17,12 +17,13 @@ import jakarta.persistence.OneToMany;
 public class Postinumero {
 	
 	@Id
+//	@GeneratedValue
 	@Size(min=5, max=5, message="Postinumeron pituus pitää olla 5 merkkiä")
-	@Column(name="postinumero", length=5)
+	@Column(name="postinumero", nullable= false, length=5)
 	private String postinumero;
 		
-	@NotEmpty(message="Postitoimipaikka ei voi olla tyhjä")
-	@Size(min=1, max=50)
+	@NotEmpty(message="Kenttä ei voi olla tyhjä")
+	@Size(min=1, max=50, message="Postitoimipaikan pituus 1-50 merkkiä")
 	private String postitoimipaikka;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "postinumero")

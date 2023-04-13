@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
+<title>Lisää</title>
+</head>
+<body>
+<div class="container">
+	<h1>Lisää postinumero</h1>
+	<div>
+		<form th:object="${postinumero}" th:action="@{savePostinumero}" action="#" method="post">
+		  	<div>
+		 		<label>Postinumero</label>
+				<input type="text" th:field="*{postinumero}" />
+				<div th:if="${#fields.hasErrors('postinumero')}" th:errors="*{postinumero}">Error</div>
+			</div>
+			<div>
+			  	<label>Postitoimipaikka</label>
+				<input type="text" th:field="*{postitoimipaikka}" />
+				<div th:if="${#fields.hasErrors('postitoimipaikka')}" th:errors="*{postitoimipaikka}">Error</div>
+			</div>
+		<br>
+						
+			<input type="submit" class="btn btn-success" value="Tallenna"></input>
+		</form>
+		<a class="btn btn-secondary" href="/postinumerot" role="button">Postinumerolistaukseen</a>
+	</div>
+	
+</div>
+</body>
+</html>

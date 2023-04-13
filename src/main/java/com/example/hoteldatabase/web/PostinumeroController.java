@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.hoteldatabase.domain.Postinumero;
 import com.example.hoteldatabase.domain.PostinumeroRepository;
 
+import jakarta.validation.Valid;
+
 @Controller
 public class PostinumeroController {
 
@@ -29,14 +31,16 @@ public class PostinumeroController {
 		
 		//postinumeron luonti
 		@GetMapping("/addPostinumero")
+		@PreAuthorize("hasAuthority('ADMIN')")
 		public String addPostinumero(Model model) {
 			log.info("Luo uusi postinumero");
-			model.addAttribute("uusiPostinumero", new Postinumero());
+			model.addAttribute("postinumero", new Postinumero());
 			return "addpostinumero";
 		}
 		
 		//postinumeron tietojen muokkaus
 		@GetMapping("/editPostinumero/{id}")
+		@PreAuthorize("hasAuthority('ADMIN')")
 		public String editPostinumero(@PathVariable("id") String postinumero, Model model ) {
 			log.info("Muokkaa postinumeron " + postinumero + " tiedot");
 			model.addAttribute("editPostinumero", postinumeroRepo.findByPostinumero(postinumero));
@@ -46,7 +50,8 @@ public class PostinumeroController {
 		
 		//postinumeron tallennus+validointi
 		@PostMapping("/savePostinumero")
-		public String savePostinumero( Postinumero postinumero, BindingResult bindingResult) { //@Valid
+		@PreAuthorize("hasAuthority('ADMIN')")
+		public String savePostinumero(@Valid Postinumero postinumero, BindingResult bindingResult) {
 			log.info("PostinumeroController: validoinnin tarkistus, postinumero: " + postinumero);
 			if(bindingResult.hasErrors()) {
 				log.info("Validointivirhe");

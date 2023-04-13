@@ -66,6 +66,8 @@ public class HoteldatabaseApplication {
 			// Postinumero(String postinumero, String postitoimipaikka)
 			postinumeroRepo.save(new Postinumero("06100", "Porvoo"));
 			postinumeroRepo.save(new Postinumero("06500", "Porvoo"));
+			postinumeroRepo.save(new Postinumero("05500", "Helsinki"));
+			postinumeroRepo.save(new Postinumero("02300", "Tampere"));
 			log.info("Haetaan kaikki postinumerot:");
 			for (Postinumero postinumero : postinumeroRepo.findAll()) {
 				log.info(postinumero.toString());
