@@ -7,41 +7,59 @@
 </head>
 <body>
 <div class="container">
-	<h1>Uusi tyontekija</h1>
+	<div class="in-line">
+		<h1>Uusi työntekijä</h1>
+	</div>
 	<div>
 	<form th:object="${uusiTyontekija}" th:action="@{/saveTyontekija}" action="#" method="post">
-		  	<div>
-		  		<label>Etunimi</label>
-				<input type="text" th:field="*{etunimi}" />
-			</div>
-			<div>
-			  	<label>Sukunimi</label>
-				<input type="text" th:field="*{sukunimi}" />
-			</div>
-			<div>
-			  	<label>Sähköposti</label>
-			  	<input type="text" th:field="*{sposti}" />
-			</div>
-			<div>
-			  	<label>Puhelin</label>
-				<input type="text" th:field="*{puhelin}" />
-			</div>
-			<div>
-			  	<label>Katuosoite</label>
-				<input type="text" th:field="*{katuosoite}" />
-			</div><br>
-		  <div class="col-auto my-1">
+			  	<div class="col-auto my-1">
+			  		<label class="mr-sm-2">Etunimi</label>
+			  		<div class="col-sm-10">
+						<input class="form-control" type="text" th:field="*{etunimi}" />
+			 			<div th:if="${#fields.hasErrors('etunimi')}" th:errors="*{etunimi}">Error</div>
+					</div>
+				</div>
+				<div class="col-auto my-1">
+				  	<label class="mr-sm-2">Sukunimi</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" th:field="*{sukunimi}" />
+						<div th:if="${#fields.hasErrors('sukunimi')}" th:errors="*{sukunimi}">Error</div>
+					</div>
+				</div>
+				<div class="col-auto my-1">
+				  	<label class="mr-sm-2">Sähköposti</label>
+				  	<div class="col-sm-10">
+					  	<input class="form-control" type="text" th:field="*{sposti}" />
+					  	<div th:if="${#fields.hasErrors('sposti')}" th:errors="*{sposti}">Error</div>
+					</div>
+				</div>
+				<div class="col-auto my-1">
+				  	<label class="mr-sm-2">Puhelin</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" th:field="*{puhelin}" />
+						<div th:if="${#fields.hasErrors('puhelin')}" th:errors="*{puhelin}">Error</div>
+					</div>
+				</div>
+				<div class="col-auto my-1">
+				  	<label class="mr-sm-2">Katuosoite</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="text" th:field="*{katuosoite}" />
+						<div th:if="${#fields.hasErrors('katuosoite')}" th:errors="*{katuosoite}">Error</div>
+					</div>
+				</div>
+	
+		  	<div class="col-auto my-1">
 				<label class="mr-sm-2">Postitoimipaikka</label>
 					<select class="form-control col-sm-10" id="postinumerot" th:field="*{postinumero}" >
 	       				<option th:each="postinumero: ${postinumerot}" th:value="${postinumero.postinumero}" th:text="${postinumero.postitoimipaikka} + ' ' + ${postinumero.postinumero}"></option>
 	    			</select>
 	    	</div><br>	
-						
-			<input type="submit" class="btn btn-success" value="Tallenna"></input>
-		</form>
-		     <a class="btn btn-secondary" href="/tyontekijat" role="button">Työntekijälistaukseen</a>
+			<div class="form-group align-center" >	
+				<input type="submit" class="btn btn-success" value="Tallenna"></input>
+				<a class="btn btn-secondary" href="/tyontekijat" role="button">Työntekijälistaukseen</a>
+			</div>			
+		</form>   
 	</div>
-	
 </div>
 </body>
 </html>
