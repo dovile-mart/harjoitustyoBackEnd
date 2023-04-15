@@ -10,6 +10,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
@@ -17,7 +19,10 @@ import jakarta.persistence.OneToMany;
 public class Postinumero {
 	
 	@Id
-//	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "id", nullable = false, updatable = false)
+	private Long id; //keinotekoinen id kenttä
+	
 	@Size(min=5, max=5, message="Postinumeron pituus pitää olla 5 merkkiä")
 	@Column(name="postinumero", nullable= false, length=5)
 	private String postinumero;
@@ -59,6 +64,16 @@ public class Postinumero {
 
 
 
+	public Long getId() {
+		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
 	public String getPostinumero() {
 		return postinumero;
 	}
@@ -78,19 +93,30 @@ public class Postinumero {
 	}
 
 
+	public List<Asiakas> getAsiakkaat() {
+		return asiakkaat;
+	}
+
+
 	public void setAsiakkaat(List<Asiakas> asiakkaat) {
 		this.asiakkaat = asiakkaat;
+	}
+
+
+	public List<Tyontekija> getTyontekijat() {
+		return tyontekijat;
 	}
 
 
 	public void setTyontekijat(List<Tyontekija> tyontekijat) {
 		this.tyontekijat = tyontekijat;
 	}
-
-
+	
+	
 	@Override
 	public String toString() {
-		return "Postinumero [postinumero=" + postinumero + ", postitoimipaikka=" + postitoimipaikka + "]";
+		return "Postinumero [id=" + id + ", postinumero=" + postinumero + ", postitoimipaikka=" + postitoimipaikka
+				+ "]";
 	}
 
 /*
