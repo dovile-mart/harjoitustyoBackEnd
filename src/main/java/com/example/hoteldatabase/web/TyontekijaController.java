@@ -28,6 +28,7 @@ public class TyontekijaController {
 	private PostinumeroRepository postinumeroRepo;
 	
 	//työntekijöiden listaus
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/tyontekijat")
 	public String listTyontekijat(Model model) {
 		model.addAttribute("tyontekijat", tyontekijaRepo.findAll());
