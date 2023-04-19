@@ -19,12 +19,12 @@
 							"basic": [
 								{
 									"key": "password",
-									"value": "fac70ade-ea1f-4892-a2a1-4dd2da533fd8",
+									"value": "admin",
 									"type": "string"
 								},
 								{
 									"key": "username",
-									"value": "user",
+									"value": "admin",
 									"type": "string"
 								}
 							]
@@ -62,12 +62,12 @@
 							"basic": [
 								{
 									"key": "password",
-									"value": "9fa02a32-ac15-4a4f-a0ee-c7bc285e2c6a",
+									"value": "admin",
 									"type": "string"
 								},
 								{
 									"key": "username",
-									"value": "user",
+									"value": "admin",
 									"type": "string"
 								}
 							]
@@ -98,12 +98,12 @@
 							"basic": [
 								{
 									"key": "password",
-									"value": "fac70ade-ea1f-4892-a2a1-4dd2da533fd8",
+									"value": "admin",
 									"type": "string"
 								},
 								{
 									"key": "username",
-									"value": "user",
+									"value": "admin",
 									"type": "string"
 								}
 							]
@@ -134,7 +134,19 @@
 			},
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
 				},
 				"method": "GET",
 				"header": [],
@@ -166,13 +178,25 @@
 			"name": "http://localhost:8080/api/asiakkaat",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
 				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"etunimi\": \"Testi\",\r\n    \"sukunimi\": \"Testi\",\r\n    \"sposti\": \"testi@mail.com\",\r\n    \"puhelin\": \"050-000000\",\r\n    \"katuosoite\": \"Testitie 10\",\r\n    \"postinumero\": {\r\n        \"postinumero\": \"06100\",\r\n        \"postitoimipaikka\": \"Porvoo\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"etunimi\": \"Testi\",\r\n    \"sukunimi\": \"Testi\",\r\n    \"sposti\": \"testi@mail.com\",\r\n    \"puhelin\": \"050-000000\",\r\n    \"katuosoite\": \"Testitie 10\",\r\n    \"postinumero\": {\r\n        \"id\": 1,\r\n        \"postinumero\": \"06100\",\r\n        \"postitoimipaikka\": \"Porvoo\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -201,43 +225,19 @@
 			},
 			"request": {
 				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
 						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/api/asiakkaat/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"asiakkaat",
-						"3"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/api/asiakkaat/{asiakasId} Olematon",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "noauth"
 				},
 				"method": "GET",
 				"header": [],
@@ -267,16 +267,31 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/api/asiakkaat/{asiakasId}",
+			"name": "http://localhost:8080/api/asiakkaat/{asiakasId} Olematon",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
 				},
-				"method": "PUT",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"asiakasId\": 3,\r\n    \"etunimi\": \"TESTI\",\r\n    \"sukunimi\": \"Testi\",\r\n    \"sposti\": \"testi@mail.com\",\r\n    \"puhelin\": \"050-000000\",\r\n    \"katuosoite\": \"Testitie 10\",\r\n    \"postinumero\": {\r\n        \"postinumero\": \"06100\",\r\n        \"postitoimipaikka\": \"Porvoo\"\r\n    }\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -284,7 +299,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/asiakkaat/3",
+					"raw": "http://localhost:8080/api/asiakkaat/99",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -293,7 +308,52 @@
 					"path": [
 						"api",
 						"asiakkaat",
-						"3"
+						"99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/asiakkaat/{asiakasId}",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"asiakasId\": 4,\r\n    \"etunimi\": \"TESTI\",\r\n    \"sukunimi\": \"Testi\",\r\n    \"sposti\": \"testi@mail.com\",\r\n    \"puhelin\": \"050-000000\",\r\n    \"katuosoite\": \"Testitie 10\",\r\n    \"postinumero\": {\r\n        \"id\": 1,\r\n        \"postinumero\": \"06100\",\r\n        \"postitoimipaikka\": \"Porvoo\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/asiakkaat/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"asiakkaat",
+						"4"
 					]
 				}
 			},
@@ -303,13 +363,25 @@
 			"name": "http://localhost:8080/api/asiakkaat/4 Ilman id:ttä jsonissa",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
 				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"etunimi\": \"TestiIlmanId:ttä\",\r\n    \"sukunimi\": \"Testi\",\r\n    \"sposti\": \"testi@mail.com\",\r\n    \"puhelin\": \"050-000000\",\r\n    \"katuosoite\": \"Testitie 10\",\r\n    \"postinumero\": {\r\n        \"postinumero\": \"06100\",\r\n        \"postitoimipaikka\": \"Porvoo\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"etunimi\": \"TestiIlmanId:ttä\",\r\n    \"sukunimi\": \"Testi\",\r\n    \"sposti\": \"testi@mail.com\",\r\n    \"puhelin\": \"050-000000\",\r\n    \"katuosoite\": \"Testitie 10\",\r\n    \"postinumero\": {\r\n        \"id\": 1,\r\n        \"postinumero\": \"06100\",\r\n        \"postitoimipaikka\": \"Porvoo\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -336,13 +408,25 @@
 			"name": "http://localhost:8080/api/asiakkaat/{asiakasId} väärällä id:llä",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
 				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"asiakasId\": 4,\r\n    \"etunimi\": \"TESTI Väärä id Lomakkeessa\",\r\n    \"sukunimi\": \"Testi\",\r\n    \"sposti\": \"testi@mail.com\",\r\n    \"puhelin\": \"050-000000\",\r\n    \"katuosoite\": \"Testitie 10\",\r\n    \"postinumero\": {\r\n        \"postinumero\": \"06100\",\r\n        \"postitoimipaikka\": \"Porvoo\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"asiakasId\": 4,\r\n    \"etunimi\": \"TESTI Väärä id Lomakkeessa\",\r\n    \"sukunimi\": \"Testi\",\r\n    \"sposti\": \"testi@mail.com\",\r\n    \"puhelin\": \"050-000000\",\r\n    \"katuosoite\": \"Testitie 10\",\r\n    \"postinumero\": {\r\n        \"id\": 1,\r\n        \"postinumero\": \"06100\",\r\n        \"postitoimipaikka\": \"Porvoo\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -369,13 +453,25 @@
 			"name": "http://localhost:8080/api/asiakkaat/{asiakasId} sama nimi kuin toisella asiakkaalla",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
 				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"asiakasId\": 3,\r\n    \"etunimi\": \"Joona\",\r\n    \"sukunimi\": \"Seppälä\",\r\n    \"sposti\": \"testi@mail.com\",\r\n    \"puhelin\": \"050-000000\",\r\n    \"katuosoite\": \"Testitie 10\",\r\n    \"postinumero\": {\r\n        \"postinumero\": \"06100\",\r\n        \"postitoimipaikka\": \"Porvoo\"\r\n    }\r\n}",
+					"raw": "{\r\n    \"asiakasId\": 3,\r\n    \"etunimi\": \"Joona\",\r\n    \"sukunimi\": \"Seppälä\",\r\n    \"sposti\": \"testi@mail.com\",\r\n    \"puhelin\": \"050-000000\",\r\n    \"katuosoite\": \"Testitie 10\",\r\n    \"postinumero\": {\r\n        \"id\": 1,\r\n        \"postinumero\": \"06100\",\r\n        \"postitoimipaikka\": \"Porvoo\"\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -399,10 +495,22 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/api/asiakkaat/3",
+			"name": "http://localhost:8080/api/asiakkaat/4",
 			"request": {
 				"auth": {
-					"type": "noauth"
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
 				},
 				"method": "DELETE",
 				"header": [],
@@ -416,7 +524,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/asiakkaat/3",
+					"raw": "http://localhost:8080/api/asiakkaat/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -425,7 +533,7 @@
 					"path": [
 						"api",
 						"asiakkaat",
-						"3"
+						"4"
 					]
 				}
 			},
@@ -437,12 +545,12 @@
 		"basic": [
 			{
 				"key": "password",
-				"value": "fac70ade-ea1f-4892-a2a1-4dd2da533fd8",
+				"value": "admin",
 				"type": "string"
 			},
 			{
 				"key": "username",
-				"value": "user",
+				"value": "admin",
 				"type": "string"
 			}
 		]
