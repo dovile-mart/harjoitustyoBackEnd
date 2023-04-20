@@ -61,7 +61,7 @@ public class TyontekijaController {
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("/saveTyontekija")
 	public String saveTyontekija(@Valid Tyontekija tyontekija, BindingResult bindingResult, Model model) {
-		log.info("Controller: check validation of tyontekija: " + tyontekija);
+		log.info("TyontekijaController: validoinnin tarkistus, tyontekija: " + tyontekija);
 		if(bindingResult.hasErrors()) {
 			log.info("Validointivirhe");
 			model.addAttribute("postinumerot", postinumeroRepo.findAll());
