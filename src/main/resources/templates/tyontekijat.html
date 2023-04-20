@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <title>Työntekijät</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -22,8 +22,6 @@
 					<th>Sposti</th>
 					<th>Puhelin</th>
 					<th>Osoite</th>
-					<th>Postinumero</th>
-					<th>Postitoimipaikka</th>
 					<th></th>
 					<th></th>
 				</tr>
@@ -32,9 +30,7 @@
 					<td th:text="${tyontekija.etunimi} + ' ' + ${tyontekija.sukunimi}"></td>
 					<td th:text="${tyontekija.sposti}"></td>
 					<td th:text="${tyontekija.puhelin}"></td>
-					<td th:text="${tyontekija.katuosoite}"></td>
-					<td th:text="${tyontekija.postinumero.postinumero}"></td>
-					<td th:text="${tyontekija.postinumero.postitoimipaikka}"></td>
+					<td th:text="${tyontekija.katuosoite} + ', ' + ${tyontekija.postinumero.postinumero} + ' ' + ${tyontekija.postinumero.postitoimipaikka}"></td>
 					<td><a th:href="@{/editTyontekija/{id}(id=${tyontekija.tyontekijaId})}" class="btn btn-outline-warning">Muokkaa</a></td>
 					<td><a th:href="@{/deleteTyontekija/{id}(id=${tyontekija.tyontekijaId})}" class="btn btn-outline-danger">Poista</a></td>
 				</tr>
