@@ -24,19 +24,20 @@
 					<div class="col-auto my-1">
 					  	<label class="mr-sm-2 ">Kuvaus</label>
 						<div class="col-sm-10">
-							<input class="form-control" type="text" th:field="*{huoneKuvaus}" /><!-- -->
+							<input class="form-control" type="text" th:field="*{huoneKuvaus}" />
 						</div>
 					</div>
 					<div class="col-auto my-1">
 					  	<label class="mr-sm-2 ">Hinta</label>
 					  	<div class="col-sm-10">
-						  	<input class="form-control" type="number" th:field="*{hinta}" /><!-- -->
+						  	<input class="form-control" type="number" th:field="*{hinta}" />
+						  	<div th:if="${#fields.hasErrors('hinta')}" th:errors="*{hinta}">Error</div>
 						</div>
 					</div>
 					<div class="col-auto my-1">
 					  	<label class="mr-sm-2 ">Vapaa</label>
 						<div class="col-sm-10">
-							<input class="form-control" type="text" th:field="*{onkoVapaa}" /><!-- -->
+							<input class="form-control" type="text" readonly="readonly" th:field="*{onkoVapaa}" /><!--disabloituna myöhempää kehitystä varten -->
 						</div>
 					</div>
 				<div class="form-group align-center" >

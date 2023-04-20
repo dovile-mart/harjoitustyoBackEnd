@@ -11,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
@@ -29,6 +30,7 @@ public class Huone {
 	@Column(name="huone_kuvaus")
 	private String huoneKuvaus;
 	
+	@Min(value = 0, message = "Hinta ei voi olla negatiivinen luku")
 	private int hinta;
 	
 	@Column(name="onko_vapaa")
@@ -68,56 +70,6 @@ public class Huone {
 	}
 
 
-
-	
-	/*	
-	public String getHuoneNro() {
-		return huoneNro;
-	}
-	public void setHuoneNro(String huoneNro) {
-		this.huoneNro = huoneNro;
-	}
-	
-	public String getHuoneKuvaus() {
-		return huoneKuvaus;
-	}
-
-	public void setHuoneKuvaus(String huoneKuvaus) {
-		this.huoneKuvaus = huoneKuvaus;
-	}
-	
-	public int getHinta() {
-		return hinta;
-	}
-	
-	public void setHinta(int hinta) {
-		this.hinta = hinta;
-	}
-	
-	public boolean getOnkoVapaa() {
-		return onkoVapaa;
-	}
-
-	public void setOnkoVapaa(boolean onkoVapaa) {
-		this.onkoVapaa = onkoVapaa;
-	}
-	
-	public List<Huonevaraus> getHuonevaraukset() {
-		return huonevaraukset;
-	}
-
-	public void setHuonevaraukset(List<Huonevaraus> huonevaraukset) {
-		this.huonevaraukset = huonevaraukset;
-	}
-
-	@Override
-	public String toString() {
-		return "Huone [huoneNro=" + huoneNro + ", huoneKuvaus=" + huoneKuvaus + ", hinta=" + hinta + ", onkoVapaa="
-				+ onkoVapaa + ", huonevaraukset=" + huonevaraukset + "]";
-	}
-
-*/	
-	
 	
 	public Long getId() {
 		return id;

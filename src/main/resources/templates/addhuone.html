@@ -23,6 +23,7 @@
 		 	<div>
 			  	<label>Hinta</label>
 			  	<input type="number" th:field="*{hinta}" />
+			  	<div th:if="${#fields.hasErrors('hinta')}" th:errors="*{hinta}">Error</div>
 			</div>
 		<br>
 			
