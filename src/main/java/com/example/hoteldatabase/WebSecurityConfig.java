@@ -20,14 +20,14 @@ public class WebSecurityConfig  {
 	private UserDetailServiceImpl userDetailsService;
 	
 	private static final AntPathRequestMatcher[] WHITE_LIST_URLS = {
-    //        new AntPathRequestMatcher("/api/**"),		//Postmanin testejä varten kommentoitu pois
+//			new AntPathRequestMatcher("/api/**"),		//Postmanin testejä varten kommentoitu pois
             new AntPathRequestMatcher("/h2-console/**"),
-            new AntPathRequestMatcher("/index"),
-            new AntPathRequestMatcher("/**")
+//          new AntPathRequestMatcher("/index"),
+//          new AntPathRequestMatcher("/**")
     };
 	
 	private static final AntPathRequestMatcher[] ADMIN_LIST_URLS = {
-            new AntPathRequestMatcher("/admin/**"),
+//            new AntPathRequestMatcher("/admin/**"),
             new AntPathRequestMatcher("/api/**")
 	};
 	
@@ -36,7 +36,7 @@ public class WebSecurityConfig  {
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		http.httpBasic() // Postmania varten, ennen tätä Postman palauti html login sivun
 		.and()
-		.authorizeHttpRequests().requestMatchers(ADMIN_LIST_URLS).hasAuthority("ADMIN") //.hasRole("ADMIN")
+		.authorizeHttpRequests().requestMatchers(ADMIN_LIST_URLS).hasAuthority("ADMIN")
 		.and()
 		.authorizeHttpRequests().requestMatchers(WHITE_LIST_URLS).permitAll()
 		.and()
