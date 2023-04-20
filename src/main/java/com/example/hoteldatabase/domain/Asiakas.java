@@ -21,8 +21,8 @@ import jakarta.validation.constraints.Size;
 public class Asiakas {
 	
 	@Id
-	@Column(name="asiakas_id")
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="asiakas_id")
 	private Long asiakasId;
 	
 	@NotEmpty(message = "Anna etunimi.")
@@ -176,12 +176,19 @@ public class Asiakas {
 		this.varaukset = varaukset;
 	}
 
-	
+
 	@Override
+	public String toString() {
+		return "Asiakas [etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", sposti=" + sposti + ", puhelin=" + puhelin
+				+ ", katuosoite=" + katuosoite + ", postinumero=" + postinumero + "]";
+	}
+
+	
+/*	@Override
 	public String toString() {
 		return "Asiakas [asiakasId=" + asiakasId + ", etunimi=" + etunimi + ", sukunimi=" + sukunimi + ", sposti="
 				+ sposti + ", puhelin=" + puhelin + ", katuosoite=" + katuosoite + ", postinumero=" + this.getPostinumero()
 				+ ", varaukset=" + this.getVaraukset() + "]";
-	}
+	}*/
 	
 }
