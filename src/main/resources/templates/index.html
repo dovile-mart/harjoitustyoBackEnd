@@ -17,15 +17,15 @@
 					<form th:action="@{/logout}" method="post" th:align="center">
 						<input type="submit" value="Kirjaudu ulos" class="btn btn-sm btn-danger"/>
 					</form>
-				</div>
- 				<div class="mx-auto" sec:authorize="isAuthenticated()">
-      				<b>Käyttäjä: <span sec:authentication="name"></span></b>
+	 				<div class="mx-auto" sec:authorize="isAuthenticated()">
+	      				<b>Käyttäjä: <span sec:authentication="name"></span></b>
+	      			</div>
       			</div>
 			</div>
 
 			<div class="card">
 				<a href="/asiakkaat" class="list-group-item list-group-item-action list-group-item-info" >Asiakkaat</a>
-				<a href="/tyontekijat" class="list-group-item list-group-item-action list-group-item-info">Työntekijät</a>
+				<a href="/tyontekijat" sec:authorize="hasAuthority('ADMIN')" class="list-group-item list-group-item-action list-group-item-info">Työntekijät</a>
 				<a href="/huoneet" class="list-group-item list-group-item-action list-group-item-info">Huoneet</a>
 				<a href="/huonevaraukset" class="list-group-item list-group-item-action list-group-item-info">Huonevaraukset</a>
 				<a href="/varaukset" class="list-group-item list-group-item-action list-group-item-info">Varaukset</a>
