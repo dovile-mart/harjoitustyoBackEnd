@@ -71,9 +71,10 @@ public class AsiakasController {
 	public String saveAsiakas(@Valid @ModelAttribute("asiakas") Asiakas asiakas, BindingResult bindingResult, Model model) {
 		log.info("AsiakasController: validoinnin tarkistus, asiakas: " + asiakas);
 		if(bindingResult.hasErrors()) {
-			log.info("Validointivirhe, postinumerot ja asiakkaat: " + postinumeroRepo.findAll() + asiakasRepo.findAll() );
-	//		model.addAttribute("asiakkaat", asiakasRepo.findAllById(asiakasId).get(0)));
+			log.info("Validointivirhe, asiakkaan lomaketiedot virheelliset.");
+			model.addAttribute("asiakaskaat", asiakasRepo.findByAsiakasId(asiakas.getAsiakasId()));		
 			model.addAttribute("postinumerot", postinumeroRepo.findAll());
+			log.info("Validointivirhe, asiakkaan lomaketiedot virheelliset: " + asiakas);	
 			return "/addasiakas";
 		}
 		asiakasRepo.save(asiakas); //jos kaikki hyvin, tallennetaan asiakas tietokantaan
