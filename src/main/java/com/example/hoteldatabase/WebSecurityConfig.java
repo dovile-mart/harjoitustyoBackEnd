@@ -22,7 +22,6 @@ public class WebSecurityConfig  {
 	private static final AntPathRequestMatcher[] WHITE_LIST_URLS = {
 //			new AntPathRequestMatcher("/api/**"),		//Postmanin testejä varten kommentoitu pois
             new AntPathRequestMatcher("/h2-console/**"),
-//          new AntPathRequestMatcher("/index"),
 //          new AntPathRequestMatcher("/**")
     };
 	
