@@ -77,7 +77,7 @@ public class HoteldatabaseApplication {
 			log.info("Luodaan huoneita");
 			//String huoneNro, String huoneKuvaus, int hinta, boolean onkoVapaa
 			huoneRepo.save(new Huone("101", "Huoneen 101 kuvaus", 90, true));
-			huoneRepo.save(new Huone("102", "Huoneen 102 kuvaus", 110, false));
+			huoneRepo.save(new Huone("102", "Huoneen 102 kuvaus", 110, true));
 			huoneRepo.save(new Huone("103", "Huoneen 103 kuvaus", 95, true));
 			log.info("Tulostetaan huoneet:");
 			for (Huone huone : huoneRepo.findAll()) {
