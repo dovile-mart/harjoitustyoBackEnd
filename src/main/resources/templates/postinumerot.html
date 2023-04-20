@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
 <head>
 <title>Postinumerot</title>
@@ -7,11 +7,9 @@
 </head>
 <body>
 	<div class="container">
-		<div>
-			<br> <br>
+		<div class="col-auto my-5">
 			<a class="btn btn-info" href="/index" role="button">Etusivulle</a>
-			<a class="btn btn-warning" href="/addPostinumero" role="button">Lisää postinumero</a>
-			<br> <br>
+			<a class="btn btn-warning" href="/addPostinumero" role="button" sec:authorize="hasAuthority('ADMIN')">Lisää postinumero</a>
 		</div>
 		<div>
 			<h3>Postinumerot</h3>
@@ -19,14 +17,12 @@
 				<tr>
 					<th>Postinumero</th>
 					<th>Postitoimipaikka</th>
-					<th></th>
-				<!-- 	<th></th>-->
+					<th sec:authorize="hasAuthority('ADMIN')"></th>
 				</tr>
 				<tr th:each = "postinumero : ${postinumerot}">
 					<td th:text="${postinumero.postinumero}"></td>
 					<td th:text="${postinumero.postitoimipaikka}"></td>
-			<!-- 		<td><a th:href="@{/editPostinumero/{id}(id=${postinumero.postinumero})}" class="btn btn-outline-warning">Muokkaa</a></td> -->
-					<td><a th:href="@{/deletePostinumero/{id}(id=${postinumero.id})}" class="btn btn-outline-danger">Poista</a></td>
+					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deletePostinumero/{id}(id=${postinumero.id})}" class="btn btn-outline-danger">Poista</a></td>
 				</tr>
 			</table>
 		</div>
