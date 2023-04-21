@@ -1,6 +1,5 @@
 package com.example.hoteldatabase.web;
 
-import java.time.LocalDate;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,12 +41,13 @@ public class HuonevarausController {
 		}
 		
 		//huonevarauksen luonti
-		@RequestMapping("/addHuonevaraus")
+		@RequestMapping("/addhuonevaraus")
 		public String addHuonevaraus(Model model) {
 			log.info("Luo uusi huonevaraus ");
-			model.addAttribute("uusiHuonevaraus", new Huonevaraus());
+			model.addAttribute("huonevaraus", new Huonevaraus());
 			model.addAttribute("huoneet", huoneRepo.findAll());
 			model.addAttribute("varaukset", varausRepo.findAll());
+			
 			return "addhuonevaraus";
 		}
 		
