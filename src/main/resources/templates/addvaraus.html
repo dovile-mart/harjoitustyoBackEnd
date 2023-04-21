@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link th:href = "@{/css/bootstrap.min.css}" rel="stylesheet">
+<title>Lisää</title>
+</head>
+<body>
+<div class="container">
+	<div class="in-line">
+		<h1>Luo uusi varaus</h1>
+	</div>
+	<div>
+		<form th:object="${varaus}" th:action="@{/saveVaraus}" action="#" method="post">
+			  	 <div class="col-auto my-1">
+					<label class="mr-sm-2">Asiakas</label>
+					<select class="form-control col-sm-10" id="asiakkaat" th:field="*{asiakas}" >
+		       			<option th:each="asiakas: ${asiakkaat}" th:value="${asiakas.asiakasId}" th:text="${asiakas.etunimi} + ' ' + ${asiakas.sukunimi}"></option>
+		    		</select>
+		   		</div>
+			  	
+			  	 <div class="col-auto my-1">
+					<label class="mr-sm-2">Työntekijä</label>
+					<select class="form-control col-sm-10" id="tyontekijat" th:field="*{tyontekija}" >
+		       			<option th:each="tyontekija: ${tyontekijat}" th:value="${tyontekija.tyontekijaId}" th:text="${tyontekija.etunimi} + ' ' + ${tyontekija.sukunimi}"></option>
+		    		</select>
+		   		</div>
+				<div class="col-auto my-1">
+				  	<label class="mr-sm-2">Varauspäivämäärä</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="date" th:field="*{varausPvm}" />
+					</div>
+				</div>
+			  	
+			  	<div class="col-auto my-1">
+			  		<label class="mr-sm-2">Lisätietoja</label>
+			  		<div class="col-sm-10">
+						<input class="form-control" type="text" th:field="*{lisatietoja}" />
+					</div>
+				</div>
+				<div class="col-auto my-1">
+				  	<label class="mr-sm-2">Hinta</label>
+					<div class="col-sm-10">
+						<input class="form-control" type="number" th:field="*{hinta}" />
+					</div>
+				</div>
+				<div class="col-auto my-1">
+				  	<label>Maksettu</label>
+				  	<div class="col-sm-10">
+					  	<input class="form-control" type="checkbox" th:field="*{maksettu}" />
+					</div>
+				</div>
+				<div class="form-group align-center" >	
+					<a class="btn btn-secondary" href="/huonevaraukset" role="button">Huonevarauksiin</a>
+				</div>
+				<br>
+				<div class="form-group align-center" >	
+					<input type="submit" class="btn btn-success" value="Tallenna"></input>
+					<a class="btn btn-secondary" href="/varaukset" role="button">Varauksiin</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
