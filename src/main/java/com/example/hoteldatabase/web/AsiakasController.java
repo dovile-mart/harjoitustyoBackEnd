@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.hoteldatabase.domain.Asiakas;
 import com.example.hoteldatabase.domain.AsiakasRepository;
+import com.example.hoteldatabase.domain.HuonevarausRepository;
 import com.example.hoteldatabase.domain.PostinumeroRepository;
 import com.example.hoteldatabase.domain.VarausRepository;
 
@@ -31,6 +32,8 @@ public class AsiakasController {
 	private PostinumeroRepository postinumeroRepo;
 	@Autowired
 	private VarausRepository varausRepo;
+	@Autowired
+	private HuonevarausRepository huonevarausRepo;
 
 	//pääsivu
 	@GetMapping(value= {"/", "index"})
@@ -96,6 +99,7 @@ public class AsiakasController {
 		log.info("Hae asiakkaan (id: " + asiakasId + ") varaukset:");
 		model.addAttribute("asiakasvaraukset", asiakasRepo.findById(asiakasId));
 		model.addAttribute("varaukset", varausRepo.findAll());
+		model.addAttribute("huonevaraukset", huonevarausRepo.findAll());
 		return "asiakasvaraukset";
 	}
 }
