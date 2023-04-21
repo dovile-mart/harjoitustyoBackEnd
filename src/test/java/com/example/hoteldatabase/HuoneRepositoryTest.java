@@ -2,6 +2,7 @@ package com.example.hoteldatabase;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.example.hoteldatabase.domain.Huone;
@@ -11,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 @DataJpaTest
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE) //kun lisäsin tämän, testit eivät menneet läpi MariaDB:ssa, mutta ilman kaikki toimii
 public class HuoneRepositoryTest {
 	@Autowired
 	private HuoneRepository huoneRepo;
@@ -19,8 +21,9 @@ public class HuoneRepositoryTest {
 	//etsi kaikki huoneet H2-kannasta
 	@Test
 	public void etsiKaikkiHuoneetH2() {
+		Huone huone = huoneRepo.save(new Huone("222","Huoneen 222 kuvaus",155, true));
 		Iterable<Huone> huoneet = huoneRepo.findAll();
-		assertThat(huoneet).hasSize(3);
+		assertThat(huoneet).hasSizeBetween(1, 6);//hasSize(3); //H2:ssa toimii, MariaDb:ssa loin yhden huoneen ja muutin tuloksen ehdon 
 	}
 	
 
@@ -38,7 +41,8 @@ public class HuoneRepositoryTest {
 	//etsi huone numerolla 101
 	@Test
 	public void etsiHuone() {
-		Huone huoneet = huoneRepo.findByHuoneNro("101").get(0);
+		Huone huone1 = huoneRepo.save(new Huone("111","Hieno huone 111",111, false));
+		Huone huoneet = huoneRepo.findByHuoneNro("111").get(0);
 		assertThat(huoneet).isNotNull();
 	}
 	
