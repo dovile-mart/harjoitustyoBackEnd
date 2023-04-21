@@ -23,7 +23,7 @@ public class Huonevaraus {
 	private Varaus varaus;
 	
 	@ManyToOne
-	@JoinColumn(name="huone_nro")
+	@JoinColumn(name="id")
 	private Huone huone;
 
 	@Column(name="tulo_pvm")
