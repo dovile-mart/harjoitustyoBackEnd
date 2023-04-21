@@ -11,4 +11,5 @@ public interface HuonevarausRepository extends CrudRepository<Huonevaraus, Long>
 //  List<Huonevaraus> findByVarausId(Varaus varausId);
 //	List<Huonevaraus> findByHuoneNro(Huone huoneNro);
 	List<Huonevaraus> findByHuone(Huone huone);
+	List<Huonevaraus> findByVaraus(Varaus varaus);
 }
