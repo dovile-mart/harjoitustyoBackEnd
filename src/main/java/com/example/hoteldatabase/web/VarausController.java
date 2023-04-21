@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.hoteldatabase.domain.AsiakasRepository;
+import com.example.hoteldatabase.domain.Huonevaraus;
 import com.example.hoteldatabase.domain.HuonevarausRepository;
 import com.example.hoteldatabase.domain.TyontekijaRepository;
 import com.example.hoteldatabase.domain.Varaus;
@@ -34,11 +35,11 @@ public class VarausController {
 		
 		//varausten listaus
 		@GetMapping("/varaukset")			//http://localhost:8080/varaukset
-		public String listVarauksett(Model model) {
+		public String listVaraukset(Model model) {
 			model.addAttribute("varaukset", varausRepo.findAll());
-			model.addAttribute("huonevaraukset", huonevarausRepo.findAll());
-			model.addAttribute("asiakkaat", asiakasRepo.findAll());
-			model.addAttribute("tyontekijat", tyontekijaRepo.findAll());
+//			model.addAttribute("huonevaraukset", huonevarausRepo.findAll());
+//			model.addAttribute("asiakkaat", asiakasRepo.findAll());
+//			model.addAttribute("tyontekijat", tyontekijaRepo.findAll());
 			return "varaukset";
 		}
 			
@@ -47,9 +48,10 @@ public class VarausController {
 		@RequestMapping("/addVaraus")
 		public String addVaraus(Model model) {
 			log.info("Luo uusi varaus ");
-			model.addAttribute("uusi Varaus", new Varaus());
+			model.addAttribute("varaus", new Varaus());
 			model.addAttribute("huonevaraukset", huonevarausRepo.findAll());
-			model.addAttribute("varaukset", varausRepo.findAll());
+			model.addAttribute("asiakkaat", asiakasRepo.findAll());
+			model.addAttribute("tyontekijat", tyontekijaRepo.findAll());
 			return "addvaraus";
 		}
 		
@@ -59,6 +61,8 @@ public class VarausController {
 			log.info("Muokkaa varaus: " + varausId);
 			model.addAttribute("editVaraus", varausRepo.findByVarausId(varausId));
 			model.addAttribute("huonevaraukset", huonevarausRepo.findAll());
+			model.addAttribute("asiakkaat", asiakasRepo.findAll());
+			model.addAttribute("tyontekijat", tyontekijaRepo.findAll());
 			return "editvaraus";
 		}
 		
