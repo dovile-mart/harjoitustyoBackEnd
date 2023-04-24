@@ -10,3 +10,7 @@ Myös asiakkaan tietojen muutoksia pystyy tehdä user-käyttäjä. Postinumerot-
 ### Tietokannan kaavion ensimmäinen versio:
 
 ![hotelliTietokantaV1](https://user-images.githubusercontent.com/71691245/222985969-7cd57d46-34e4-4900-9ca1-87dab3d2059f.JPG)
+
+### Tietokannan kaavion toinen versio:
+
+![hotelliTietokantakaavioV2](https://user-images.githubusercontent.com/71691245/233917156-62f9ab12-132a-4775-a9ba-abb1ddd205d3.JPG)
