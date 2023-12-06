@@ -1,10 +1,10 @@
-[![(YouTube)](https://img.shields.io/youtube/views/v=WDnde-qO42Y)](https://www.youtube.com/watch?v=WDnde-qO42Y)
+<!-- [![(YouTube)](https://img.shields.io/youtube/views/v=WDnde-qO42Y)](https://www.youtube.com/watch?v=WDnde-qO42Y)-->
 # Harjoitustyö
 
 ### Sisältö
-- [Idea](https://github.com/dovile-mart/harjoitustyoBackEnd/edit/main/README.md#L9)
-- [Tietokanta](https://github.com/dovile-mart/harjoitustyoBackEnd/edit/main/README.md#L16)
-- [Docker](https://github.com/dovile-mart/harjoitustyoBackEnd/edit/main/README.md#L25)
+- [Idea](https://github.com/dovile-mart/harjoitustyoBackEnd#idea)
+- [Tietokanta](https://github.com/dovile-mart/harjoitustyoBackEnd#tietokanta)
+- [Docker](https://github.com/dovile-mart/harjoitustyoBackEnd#docker-kontti)
 
 ### Idea
 
@@ -26,3 +26,5 @@ Myös asiakkaan tietojen muutoksia pystyy tehdä user-käyttäjä. Postinumerot-
 Tällä hetkellä konttissa sovellusta ajetaan H2-tietokannalla. 
 
 Docker imagen ja kontin luontiprosessi kuvattu [videossa](https://www.youtube.com/watch?v=WDnde-qO42Y)
+
+[![Docker kontin luonti](http://img.youtube.com/vi/WDnde-qO42Y/0.jpg)](http://www.youtube.com/watch?v=WDnde-qO42Y)
